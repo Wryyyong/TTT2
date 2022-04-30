@@ -13,6 +13,7 @@ ttt_include("sh_door")
 ttt_include("sh_voice")
 ttt_include("sh_printmessage_override")
 ttt_include("sh_speed")
+ttt_include("sh_admincheckwatch")
 
 ttt_include("sv_network_sync")
 ttt_include("sv_hud_manager")
@@ -501,6 +502,8 @@ function GM:InitPostEntity()
 
 	timer.Simple(0, function()
 		addonChecker.Check()
+		TTT2AdminCheckWatch.Lock()
+		TTT2AdminCheckWatch.Report()
 	end)
 end
 
