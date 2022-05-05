@@ -13,11 +13,14 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
   - data.selectValue is added, use it instead of data.selectName to choose the value you set
   - data.selectTitle is added and shall replace data.selectName
 - New setting to disable session limits entirely. (by @Reispfannenfresser)
+- Added HookWatch module
+  - This module holds an internal table of event names that will be prevented from having further hooks added onto them after the gamemode has been initialized
+  - All successful hooks to protected event names will be reported to the server console on startup, along with the filepath of the script the hook exists in
+  - The primary purpose of this module is to protect security-based hooks from potential abuse by malicious addons
 - Added `GM:TTT2AdminCheck` function
   - Replaced all `IsSuperAdmin()` checks with this function
   - This function can be hooked and used to allow custom usergroups through these checks
-  - Hooks to this function can only be applied during the gamemode's initialization, to prevent malicious addons from abusing this function
-  - All successful hooks to this function will be reported to the server console on startup, along with the filepath of the script the hook exists in
+  - `TTT2AdminCheck` will be added to HookWatch's internal table
 
 ### Breaking Changes
 

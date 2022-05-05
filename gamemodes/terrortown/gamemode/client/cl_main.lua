@@ -33,7 +33,7 @@ ttt_include("sh_door")
 ttt_include("sh_voice")
 ttt_include("sh_printmessage_override")
 ttt_include("sh_speed")
-ttt_include("sh_admincheckwatch")
+ttt_include("sh_hookwatch")
 
 ttt_include("vgui__cl_coloredbox")
 ttt_include("vgui__cl_droleimage")
@@ -314,7 +314,7 @@ function GM:InitPostEntity()
 	RunConsoleCommand("_ttt_request_rolelist")
 
 	timer.Simple(0, function()
-		TTT2AdminCheckWatch.Lock()
+		hookWatch.Lock()
 	end)
 end
 

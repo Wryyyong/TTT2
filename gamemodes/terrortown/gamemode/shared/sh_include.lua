@@ -39,7 +39,7 @@ TTTFiles = {
 	cl_wepswitch = {file = "cl_wepswitch.lua", on = "client"},
 
 	-- shared files
-	sh_admincheckwatch = {file = "sh_admincheckwatch.lua", on = "shared"},
+	sh_hookwatch = {file = "sh_hookwatch.lua", on = "shared"},
 	sh_armor = {file = "sh_armor.lua", on = "shared"},
 	sh_corpse = {file = "sh_corpse.lua", on = "shared"},
 	sh_decal = {file = "sh_decal.lua", on = "shared"},
