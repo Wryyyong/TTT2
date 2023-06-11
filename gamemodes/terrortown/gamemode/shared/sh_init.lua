@@ -88,6 +88,22 @@ TEAM_NOCHANGE = "nochange"
 -- max networking bits to send roles numbers
 ROLE_BITS = 8
 
+hook.Add("TTT2RolesLoaded", "MinimizeRoleBits", function()
+    -- Default value of 8 bits
+    local maxIdx = 255
+
+    for _, roleTbl in SortedPairsByMemberValue(roles.roleList, "index", true) do
+        local idx = roleTbl.index
+        if not idx then continue end
+
+        maxIdx = idx
+
+        break
+    end
+
+    ROLE_BITS = math.ceil(math.log(maxIdx + 1, 2))
+end)
+
 -- override default settings of ttt to make it compatible with other addons
 -- Player roles
 ROLE_INNOCENT = 0
