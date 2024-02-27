@@ -846,6 +846,7 @@ local function SelectBaseRolePlayers(plys, subrole, roleAmount)
     local curRoles = 0
     local plysList = {}
     local roleData = roles.GetByIndex(subrole)
+    local isCooldownEnabledAndRelevant = subrole == ROLE_TRAITOR and tCooldown.cv.maxRounds:GetBool()
 
     while curRoles < roleAmount and #plys > 0 do
         -- select random index in plys table
@@ -853,12 +854,20 @@ local function SelectBaseRolePlayers(plys, subrole, roleAmount)
 
         -- the player we consider
         local ply = plys[pick]
+        local id64 = ply:SteamID64()
 
-        if subrole == ROLE_INNOCENT or ply:CanSelectRole(roleData, #plys, roleAmount) then
+        if (isCooldownEnabledAndRelevant and not tCooldown.list[id64])
+            or subrole == ROLE_INNOCENT
+            or ply:CanSelectRole(roleData, #plys, roleAmount)
+        then
             table.remove(plys, pick)
 
             curRoles = curRoles + 1
             plysList[curRoles] = ply
+
+            if isCooldownEnabledAndRelevant then
+                tCooldown.addedThisRound[id64] = tCooldown.list[id64] or 0
+            end
 
             roleselection.finalRoles[ply] = subrole -- give the player the final baserole (maybe he will receive his subrole later)
         end
@@ -876,6 +885,7 @@ end
 -- @realm server
 function roleselection.SelectRoles(plys, maxPlys)
     roleselection.selectableRoles = nil -- reset to enable recalculation
+    tCooldown.addedThisRound = {}
 
     GAMEMODE.LastRole = GAMEMODE.LastRole or {}
 

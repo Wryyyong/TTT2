@@ -48,6 +48,8 @@ ttt_include("sv_player")
 
 ttt_include("sv_weapon_pickup")
 ttt_include("sv_addonchecker")
+
+ttt_include("sv_tcooldown")
 ttt_include("sv_roleselection")
 ttt_include("sh_rolelayering")
 
