@@ -22,10 +22,10 @@ local MutedState
 VOICE.cv = {
     ---
     -- @realm client
-    duck_spectator = CreateConVar("ttt2_voice_duck_spectator", "0", CV_FLAGS_CLIENT),
+    duck_spectator = CreateConVar("ttt2_voice_duck_spectator", 0, CV_FLAGS_CLIENT),
     ---
     -- @realm client
-    duck_spectator_amount = CreateConVar("ttt2_voice_duck_spectator_amount", "0", CV_FLAGS_CLIENT),
+    duck_spectator_amount = CreateConVar("ttt2_voice_duck_spectator_amount", 0, CV_FLAGS_CLIENT),
 
     ---
     -- @realm client

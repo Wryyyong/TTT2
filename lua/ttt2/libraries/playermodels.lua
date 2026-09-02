@@ -174,7 +174,7 @@ end
 
 ---
 -- @realm server
-local cvCustomModels = CreateConVar("ttt2_use_custom_models", "0", CV_FLAGS_SERVER)
+local cvCustomModels = CreateConVar("ttt2_use_custom_models", 0, CV_FLAGS_SERVER)
 
 ---
 -- Returns an indexed table with all the models that are in the selection pool.

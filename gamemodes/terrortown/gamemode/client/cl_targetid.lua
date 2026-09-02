@@ -19,20 +19,19 @@ targetid.Initialize()
 
 ---
 -- @realm client
-local cvMinimalisticTid = CreateConVar("ttt_minimal_targetid", "0", CV_FLAGS_CLIENT)
+local cvMinimalisticTid = CreateConVar("ttt_minimal_targetid", 0, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvDrawHalo = CreateConVar("ttt_entity_draw_halo", "1", CV_FLAGS_CLIENT)
+local cvDrawHalo = CreateConVar("ttt_entity_draw_halo", 1, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableSpectatorsoutline =
-    CreateConVar("ttt2_enable_spectatorsoutline", "1", CV_FLAGS_CLIENT)
+local cvEnableSpectatorsoutline = CreateConVar("ttt2_enable_spectatorsoutline", 1, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableOverheadicons = CreateConVar("ttt2_enable_overheadicons", "1", CV_FLAGS_CLIENT)
+local cvEnableOverheadicons = CreateConVar("ttt2_enable_overheadicons", 1, CV_FLAGS_CLIENT)
 
 surface.CreateAdvancedFont(
     "TargetID_Key",

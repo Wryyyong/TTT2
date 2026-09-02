@@ -13,19 +13,19 @@ local cvPropspecToggle = GetConVar("ttt_spec_prop_control")
 
 ---
 -- @realm server
-local cvPropspecBase = CreateConVar("ttt_spec_prop_base", "8", CV_FLAGS_SERVER)
+local cvPropspecBase = CreateConVar("ttt_spec_prop_base", 8, CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cvPropspecMin = CreateConVar("ttt_spec_prop_maxpenalty", "-6", CV_FLAGS_SERVER)
+local cvPropspecMin = CreateConVar("ttt_spec_prop_maxpenalty", -6, CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cvPropspecMax = CreateConVar("ttt_spec_prop_maxbonus", "16", CV_FLAGS_SERVER)
+local cvPropspecMax = CreateConVar("ttt_spec_prop_maxbonus", 16, CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cvPropspecDashMulitplier = CreateConVar("ttt_spec_prop_dash", "2", CV_FLAGS_SERVER)
+local cvPropspecDashMulitplier = CreateConVar("ttt_spec_prop_dash", 2, CV_FLAGS_SERVER)
 
 ---
 -- Forces a @{Player} to spectate an @{Entity}
@@ -128,7 +128,7 @@ end
 
 ---
 -- @realm server
-local propspec_force = CreateConVar("ttt_spec_prop_force", "110", CV_FLAGS_SERVER)
+local propspec_force = CreateConVar("ttt_spec_prop_force", 110, CV_FLAGS_SERVER)
 
 ---
 -- Triggers an event based on the pressed key
@@ -218,7 +218,7 @@ end
 
 ---
 -- @realm server
-local propspec_retime = CreateConVar("ttt_spec_prop_rechargetime", "1", CV_FLAGS_SERVER)
+local propspec_retime = CreateConVar("ttt_spec_prop_rechargetime", 1, CV_FLAGS_SERVER)
 
 ---
 -- Recharges the amount of punches a @{Player} can do (if possible)

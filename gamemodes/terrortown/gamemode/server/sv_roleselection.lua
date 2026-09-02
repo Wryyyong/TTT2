@@ -24,7 +24,7 @@ roleselection.cv = {
     -- @realm server
     ttt_max_roles = CreateConVar(
         "ttt_max_roles",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Maximum amount of different roles"
     ),
@@ -33,7 +33,7 @@ roleselection.cv = {
     -- @realm server
     ttt_max_roles_pct = CreateConVar(
         "ttt_max_roles_pct",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Maximum amount of different roles based on player amount. ttt_max_roles needs to be 0"
     ),
@@ -42,7 +42,7 @@ roleselection.cv = {
     -- @realm server
     ttt_max_baseroles = CreateConVar(
         "ttt_max_baseroles",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Maximum amount of different baseroles"
     ),
@@ -51,7 +51,7 @@ roleselection.cv = {
     -- @realm server
     ttt_max_baseroles_pct = CreateConVar(
         "ttt_max_baseroles_pct",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Maximum amount of different baseroles based on player amount. ttt_max_baseroles needs to be 0"
     ),
@@ -74,7 +74,7 @@ roleselection.cv = {
     -- @realm server
     ttt_role_derandomize_min_weight = CreateConVar(
         "ttt_role_derandomize_min_weight",
-        "10",
+        10,
         CV_FLAGS_SERVER,
         "The minimum weight a player can have with derandomize on",
         1

@@ -6,7 +6,7 @@ if SERVER then
     -- @realm server
     local maxMeleeSlots = CreateConVar(
         "ttt2_max_melee_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of melee weapons, a player can carry (-1 = infinite)"
     )
@@ -15,7 +15,7 @@ if SERVER then
     -- @realm server
     local maxSecondarySlots = CreateConVar(
         "ttt2_max_secondary_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of secondary weapons, a player can carry (-1 = infinite)"
     )
@@ -24,7 +24,7 @@ if SERVER then
     -- @realm server
     local maxPrimarySlots = CreateConVar(
         "ttt2_max_primary_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of primary weapons, a player can carry (-1 = infinite)"
     )
@@ -33,7 +33,7 @@ if SERVER then
     -- @realm server
     local maxNadeSlots = CreateConVar(
         "ttt2_max_nade_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of grenades, a player can carry (-1 = infinite)"
     )
@@ -42,7 +42,7 @@ if SERVER then
     -- @realm server
     local maxCarrySlots = CreateConVar(
         "ttt2_max_carry_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of carry tools, a player can carry (-1 = infinite)"
     )
@@ -51,7 +51,7 @@ if SERVER then
     -- @realm server
     local maxUnarmedSlots = CreateConVar(
         "ttt2_max_unarmed_slots",
-        "1",
+        1,
         CV_FLAGS_SERVER,
         "Maximum amount of unarmed slots, a player can have (-1 = infinite)"
     )
@@ -60,7 +60,7 @@ if SERVER then
     -- @realm server
     local maxSpecialSlots = CreateConVar(
         "ttt2_max_special_slots",
-        "2",
+        2,
         CV_FLAGS_SERVER,
         "Maximum amount of special weapons, a player can carry (-1 = infinite)"
     )
@@ -69,7 +69,7 @@ if SERVER then
     -- @realm server
     local maxExtraSlots = CreateConVar(
         "ttt2_max_extra_slots",
-        "-1",
+        -1,
         CV_FLAGS_SERVER,
         "Maximum amount of extra weapons, a player can carry (-1 = infinite)"
     )

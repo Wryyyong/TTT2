@@ -9,15 +9,15 @@ if SERVER then
 
     ---
     -- @realm server
-    cvCrowbarDelay = CreateConVar("ttt2_crowbar_shove_delay", "1.0", CV_FLAGS_SERVER)
+    cvCrowbarDelay = CreateConVar("ttt2_crowbar_shove_delay", 1, CV_FLAGS_SERVER)
 
     ---
     -- @realm server
-    cvCrowbarUnlocks = CreateConVar("ttt_crowbar_unlocks", "1", CV_FLAGS_SERVER)
+    cvCrowbarUnlocks = CreateConVar("ttt_crowbar_unlocks", 1, CV_FLAGS_SERVER)
 
     ---
     -- @realm server
-    cvCrowbarPushForce = CreateConVar("ttt_crowbar_pushforce", "395", CV_FLAGS_SERVER)
+    cvCrowbarPushForce = CreateConVar("ttt_crowbar_pushforce", 395, CV_FLAGS_SERVER)
 end
 
 DEFINE_BASECLASS("weapon_tttbase")

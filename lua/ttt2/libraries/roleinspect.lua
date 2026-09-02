@@ -110,7 +110,7 @@ if SERVER then
     ---
     -- Enables recording information for role inspection.
     -- @realm server
-    roleinspect.cvar = CreateConVar("ttt2_roleinspect_enable", "0", CV_FLAGS_SERVER)
+    roleinspect.cvar = CreateConVar("ttt2_roleinspect_enable", 0, CV_FLAGS_SERVER)
 
     local function EmptyTable()
         return {}

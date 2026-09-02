@@ -9,7 +9,7 @@ end -- this is a serverside-ony module
 
 ---
 -- @realm server
-local cvSpawnWaveInterval = CreateConVar("ttt_spawn_wave_interval", "0", CV_FLAGS_SERVER)
+local cvSpawnWaveInterval = CreateConVar("ttt_spawn_wave_interval", 0, CV_FLAGS_SERVER)
 
 local pairs = pairs
 local Vector = Vector

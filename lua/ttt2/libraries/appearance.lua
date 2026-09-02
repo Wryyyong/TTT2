@@ -19,7 +19,7 @@ local cv_last_height = CreateConVar("ttt2_resolution_last_height", 1080, CV_FLAG
 
 ---
 -- @realm client
-local cv_scale = CreateConVar("ttt2_resolution_scale", 1.0, CV_FLAGS_CLIENT)
+local cv_scale = CreateConVar("ttt2_resolution_scale", 1, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
@@ -27,19 +27,19 @@ local cv_use_global_color = CreateConVar("ttt2_use_global_color", 0, CV_FLAGS_CL
 
 ---
 -- @realm client
-local cv_global_color_r = CreateConVar("ttt2_global_color_r", "30", CV_FLAGS_CLIENT)
+local cv_global_color_r = CreateConVar("ttt2_global_color_r", 30, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cv_global_color_g = CreateConVar("ttt2_global_color_g", "160", CV_FLAGS_CLIENT)
+local cv_global_color_g = CreateConVar("ttt2_global_color_g", 160, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cv_global_color_b = CreateConVar("ttt2_global_color_b", "160", CV_FLAGS_CLIENT)
+local cv_global_color_b = CreateConVar("ttt2_global_color_b", 160, CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cv_global_color_a = CreateConVar("ttt2_global_color_a", "160", CV_FLAGS_CLIENT)
+local cv_global_color_a = CreateConVar("ttt2_global_color_a", 160, CV_FLAGS_CLIENT)
 
 local function SetCachedColor()
     appearance.focusColor = Color(

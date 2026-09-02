@@ -23,7 +23,7 @@ if SERVER then
     -- @realm server
     local ttt_min_inno_pct = CreateConVar(
         "ttt_min_inno_pct",
-        "0.47",
+        0.47,
         CV_FLAGS_SERVER,
         "Minimum multiplicator for each player to calculate the minimum amount of innocents"
     )

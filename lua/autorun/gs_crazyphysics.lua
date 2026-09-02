@@ -106,13 +106,13 @@ end
 ---
 -- @realm server
 local gs_crazyphysics =
-    CreateConVar("gs_crazyphysics", "1", CV_FLAGS_SERVER, "Enables Lua crazyphysics detection")
+    CreateConVar("gs_crazyphysics", 1, CV_FLAGS_SERVER, "Enables Lua crazyphysics detection")
 
 ---
 -- @realm server
 local gs_crazyphysics_echo = CreateConVar(
     "gs_crazyphysics_echo",
-    "0",
+    0,
     CV_FLAGS_SERVER,
     "Inform players of ragdoll freezing/removal"
 )
@@ -121,7 +121,7 @@ local gs_crazyphysics_echo = CreateConVar(
 -- @realm server
 local gs_crazyphysics_interval = CreateConVar(
     "gs_crazyphysics_interval",
-    "0.1",
+    0.1,
     CV_FLAGS_SERVER,
     "How often to check entities for extreme velocity"
 )
@@ -130,7 +130,7 @@ local gs_crazyphysics_interval = CreateConVar(
 -- @realm server
 local gs_crazyphysics_speed_defuse = CreateConVar(
     "gs_crazyphysics_speed_defuse",
-    "4000",
+    4000,
     CV_FLAGS_SERVER,
     "Max velocity in in/s an entity can reach before it's frozen"
 )
@@ -139,7 +139,7 @@ local gs_crazyphysics_speed_defuse = CreateConVar(
 -- @realm server
 local gs_crazyphysics_speed_remove = CreateConVar(
     "gs_crazyphysics_speed_remove",
-    "6000",
+    6000,
     CV_FLAGS_SERVER,
     "Max velocity in in/s an entity can reach before it's removed"
 )
@@ -148,7 +148,7 @@ local gs_crazyphysics_speed_remove = CreateConVar(
 -- @realm server
 local gs_crazyphysics_defusetime = CreateConVar(
     "gs_crazyphysics_defusetime",
-    "1",
+    1,
     CV_FLAGS_SERVER,
     "How long to freeze the entity for during diffusal"
 )

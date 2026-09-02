@@ -338,13 +338,13 @@ if SERVER then
     ---
     -- @realm server
     local random_shops =
-        CreateConVar("ttt2_random_shops", "0", CV_FLAGS_SERVER, "Set to 0 to disable")
+        CreateConVar("ttt2_random_shops", 0, CV_FLAGS_SERVER, "Set to 0 to disable")
 
     ---
     -- @realm server
     local random_shop_items = CreateConVar(
         "ttt2_random_shop_items",
-        "10",
+        10,
         CV_FLAGS_SERVER,
         "Set the number of shown items in a random shop."
     )
@@ -352,23 +352,23 @@ if SERVER then
     ---
     -- @realm server
     local random_team_shops =
-        CreateConVar("ttt2_random_team_shops", "1", CV_FLAGS_SERVER, "Set to 0 to disable")
+        CreateConVar("ttt2_random_team_shops", 1, CV_FLAGS_SERVER, "Set to 0 to disable")
 
     ---
     -- @realm server
     local random_shop_reroll =
-        CreateConVar("ttt2_random_shop_reroll", "1", CV_FLAGS_SERVER, "Set to 0 to disable")
+        CreateConVar("ttt2_random_shop_reroll", 1, CV_FLAGS_SERVER, "Set to 0 to disable")
 
     ---
     -- @realm server
     local random_shop_reroll_cost =
-        CreateConVar("ttt2_random_shop_reroll_cost", "1", CV_FLAGS_SERVER, "Credit cost per reroll")
+        CreateConVar("ttt2_random_shop_reroll_cost", 1, CV_FLAGS_SERVER, "Credit cost per reroll")
 
     ---
     -- @realm server
     local random_shop_reroll_per_buy = CreateConVar(
         "ttt2_random_shop_reroll_per_buy",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Should the random shop reroll after every purchase"
     )

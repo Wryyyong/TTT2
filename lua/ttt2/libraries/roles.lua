@@ -89,25 +89,17 @@ local function SetupData(roleData)
     if SERVER and not roleData.notSelectable then
         ---
         -- @realm server
-        CreateConVar(
-            "ttt_" .. roleData.name .. "_pct",
-            tostring(conVarData.pct or 1),
-            CV_FLAGS_SERVER
-        )
+        CreateConVar("ttt_" .. roleData.name .. "_pct", conVarData.pct or 1, CV_FLAGS_SERVER)
 
         ---
         -- @realm server
-        CreateConVar(
-            "ttt_" .. roleData.name .. "_max",
-            tostring(conVarData.maximum or 1),
-            CV_FLAGS_SERVER
-        )
+        CreateConVar("ttt_" .. roleData.name .. "_max", conVarData.maximum or 1, CV_FLAGS_SERVER)
 
         ---
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.name .. "_min_players",
-            tostring(conVarData.minPlayers or 1),
+            conVarData.minPlayers or 1,
             CV_FLAGS_SERVER
         )
 
@@ -117,7 +109,7 @@ local function SetupData(roleData)
             -- @realm server
             CreateConVar(
                 "ttt_" .. roleData.name .. "_karma_min",
-                tostring(conVarData.minKarma or 0),
+                conVarData.minKarma or 0,
                 CV_FLAGS_SERVER
             )
 
@@ -125,13 +117,13 @@ local function SetupData(roleData)
             -- @realm server
             CreateConVar(
                 "ttt_" .. roleData.name .. "_random",
-                tostring(conVarData.random or 100),
+                conVarData.random or 100,
                 CV_FLAGS_SERVER
             )
 
             ---
             -- @realm server
-            CreateConVar("ttt_" .. roleData.name .. "_enabled", "1", CV_FLAGS_SERVER)
+            CreateConVar("ttt_" .. roleData.name .. "_enabled", 1, CV_FLAGS_SERVER)
         end
     end
 
@@ -139,7 +131,7 @@ local function SetupData(roleData)
     -- @realm shared
     CreateConVar(
         "ttt_" .. roleData.name .. "_traitor_button",
-        tostring(conVarData.traitorButton or 0),
+        conVarData.traitorButton or 0,
         CV_FLAGS_SHARED
     )
 
@@ -147,7 +139,7 @@ local function SetupData(roleData)
     -- @realm shared
     CreateConVar(
         "ttt2_ragdoll_pinning_" .. roleData.name,
-        tostring(conVarData.ragdollPinning or 0),
+        conVarData.ragdollPinning or 0,
         CV_FLAGS_SHARED
     )
 
@@ -156,7 +148,7 @@ local function SetupData(roleData)
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_starting",
-            tostring(conVarData.credits or 0),
+            conVarData.credits or 0,
             CV_FLAGS_SERVER
         )
 
@@ -164,7 +156,7 @@ local function SetupData(roleData)
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_dead_enb",
-            tostring(conVarData.creditsAwardDeadEnable or 0),
+            conVarData.creditsAwardDeadEnable or 0,
             CV_FLAGS_SERVER
         )
 
@@ -172,7 +164,7 @@ local function SetupData(roleData)
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_kill_enb",
-            tostring(conVarData.creditsAwardKillEnable or 0),
+            conVarData.creditsAwardKillEnable or 0,
             CV_FLAGS_SERVER
         )
 
@@ -181,8 +173,7 @@ local function SetupData(roleData)
         if not conVarData.shopFallback and roleData.fallbackTable then
             shopFallbackValue = SHOP_UNSET
         else
-            shopFallbackValue = conVarData.shopFallback and tostring(conVarData.shopFallback)
-                or SHOP_DISABLED
+            shopFallbackValue = conVarData.shopFallback or SHOP_DISABLED
         end
 
         ---
@@ -201,7 +192,7 @@ local function SetupData(roleData)
             -- @realm server
             CreateConVar(
                 "ttt_credits_" .. roleData.name .. "kill",
-                tostring(conVarData.traitorKill),
+                conVarData.traitorKill,
                 CV_FLAGS_SERVER
             )
         end

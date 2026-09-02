@@ -56,7 +56,7 @@ CORPSE_KILL_DIRECTION_SIDE = 3
 -- mode 0: normal behavior, everyone can search/confirm bodies
 -- mode 1: only public policing roles can confirm bodies, but everyone can still see all data in the menu
 -- mode 2: only public policing roles can confirm and search bodies
-local cvInspectConfirmMode = CreateConVar("ttt2_inspect_confirm_mode", "0", CV_FLAGS_SHARED)
+local cvInspectConfirmMode = CreateConVar("ttt2_inspect_confirm_mode", 0, CV_FLAGS_SHARED)
 
 ---
 -- @realm shared
@@ -65,7 +65,7 @@ local cvInspectConfirmMode = CreateConVar("ttt2_inspect_confirm_mode", "0", CV_F
 -- NOTE: On is default only for compatability. Many players seem to expect it to not be the case by default,
 --       so perhaps it'd be a good idea to default to off.
 local cvCreditsVisibleToAll =
-    CreateConVar("ttt2_inspect_credits_always_visible", "1", CV_FLAGS_SHARED)
+    CreateConVar("ttt2_inspect_credits_always_visible", 1, CV_FLAGS_SHARED)
 
 local materialWeaponFallback = Material("vgui/ttt/missing_equip_icon")
 

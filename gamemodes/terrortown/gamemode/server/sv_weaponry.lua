@@ -18,11 +18,11 @@ local IsEquipment = WEPS.IsEquipment
 
 ---
 -- @realm server
-local cv_auto_pickup = CreateConVar("ttt_weapon_autopickup", "1", CV_FLAGS_SERVER)
+local cv_auto_pickup = CreateConVar("ttt_weapon_autopickup", 1, CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cv_ttt_detective_hats = CreateConVar("ttt_detective_hats", "0", CV_FLAGS_SERVER)
+local cv_ttt_detective_hats = CreateConVar("ttt_detective_hats", 0, CV_FLAGS_SERVER)
 
 ---
 -- Returns whether or not a @{Player} is allowed to pick up a @{Weapon}

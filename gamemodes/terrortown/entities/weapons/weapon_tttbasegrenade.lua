@@ -62,7 +62,7 @@ AccessorFunc(SWEP, "pull_time", "PullTime", FORCE_NUMBER)
 
 ---
 -- @realm server
-local cvNadeThrowDuringPrep = CreateConVar("ttt_nade_throw_during_prep", "0", CV_FLAGS_SERVER)
+local cvNadeThrowDuringPrep = CreateConVar("ttt_nade_throw_during_prep", 0, CV_FLAGS_SERVER)
 
 ---
 -- @ignore

@@ -10,19 +10,19 @@ end
 
 ---
 -- @realm shared
-local cvVoiceDrain = CreateConVar("ttt_voice_drain", "0", CV_FLAGS_SHARED)
+local cvVoiceDrain = CreateConVar("ttt_voice_drain", 0, CV_FLAGS_SHARED)
 
 ---
 -- @realm shared
-local cvVoiceDrainNormal = CreateConVar("ttt_voice_drain_normal", "0.2", CV_FLAGS_SHARED)
+local cvVoiceDrainNormal = CreateConVar("ttt_voice_drain_normal", 0.2, CV_FLAGS_SHARED)
 
 ---
 -- @realm shared
-local cvVoiceDrainAdmin = CreateConVar("ttt_voice_drain_admin", "0.05", CV_FLAGS_SHARED)
+local cvVoiceDrainAdmin = CreateConVar("ttt_voice_drain_admin", 0.05, CV_FLAGS_SHARED)
 
 ---
 -- @realm shared
-local cvVoiceDrainRecharge = CreateConVar("ttt_voice_drain_recharge", "0.05", CV_FLAGS_SHARED)
+local cvVoiceDrainRecharge = CreateConVar("ttt_voice_drain_recharge", 0.05, CV_FLAGS_SHARED)
 
 voicebattery = {}
 

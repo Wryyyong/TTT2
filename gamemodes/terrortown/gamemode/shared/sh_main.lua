@@ -357,7 +357,7 @@ local ttt_playercolors_serious_count = #ttt_playercolors.serious
 
 ---
 -- @realm shared
-local colormode = CreateConVar("ttt_playercolor_mode", "1", CV_FLAGS_SHARED)
+local colormode = CreateConVar("ttt_playercolor_mode", 1, CV_FLAGS_SHARED)
 
 ---
 -- @param string model The selected (default) playermodel

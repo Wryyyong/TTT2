@@ -8,7 +8,7 @@ if SERVER then
     -- @realm server
     local cv_tbutton = CreateConVar(
         "ttt2_tbutton_admin_show",
-        "0",
+        0,
         CV_FLAGS_SERVER,
         "Always show the buttons to admins in range",
         0,

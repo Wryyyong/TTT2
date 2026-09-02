@@ -36,18 +36,14 @@ else
 
     ---
     -- @realm server
-    local dna_mode = CreateConVar(
-        "ttt2_dna_radar",
-        "0",
-        CV_FLAGS_SERVER,
-        "Toggles the DNA Scanner functionality"
-    )
+    local dna_mode =
+        CreateConVar("ttt2_dna_radar", 0, CV_FLAGS_SERVER, "Toggles the DNA Scanner functionality")
 
     ---
     -- @realm server
     local dna_slots = CreateConVar(
         "ttt2_dna_scanner_slots",
-        "4",
+        4,
         CV_FLAGS_SERVER,
         "Defines the maximum amount of DNA slots"
     )
@@ -56,7 +52,7 @@ else
     -- @realm server
     local dna_radar_cd = CreateConVar(
         "ttt2_dna_radar_cooldown",
-        "5.0",
+        5,
         CV_FLAGS_SERVER,
         "Defines the cooldown in seconds"
     )

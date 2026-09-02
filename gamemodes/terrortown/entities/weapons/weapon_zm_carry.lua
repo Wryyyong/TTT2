@@ -101,28 +101,28 @@ SWEP.pinRagRange = 90
 
 ---
 -- @realm shared
-local cvAllowRagCarry = CreateConVar("ttt_ragdoll_carrying", "1", CV_FLAGS_SHARED)
+local cvAllowRagCarry = CreateConVar("ttt_ragdoll_carrying", 1, CV_FLAGS_SHARED)
 
 ---
 -- @realm server
-local cvPropForce = CreateConVar("ttt_prop_carrying_force", "60000", CV_FLAGS_SERVER)
+local cvPropForce = CreateConVar("ttt_prop_carrying_force", 60000, CV_FLAGS_SERVER)
 ---
 -- @realm shared
-local cvPropThrow = CreateConVar("ttt_prop_throwing", "1", CV_FLAGS_SHARED)
+local cvPropThrow = CreateConVar("ttt_prop_throwing", 1, CV_FLAGS_SHARED)
 
 ---
 -- @note Allowing weapon pickups can allow players to cause a crash in the physics
 -- system (ie. not fixable). Tuning the range seems to make this more
 -- difficult. Not sure why. It's that kind of crash.
 -- @realm shared
-local cvAllowWepCarry = CreateConVar("ttt_weapon_carrying", "0", CV_FLAGS_SHARED)
+local cvAllowWepCarry = CreateConVar("ttt_weapon_carrying", 0, CV_FLAGS_SHARED)
 
 ---
 -- @note Allowing weapon pickups can allow players to cause a crash in the physics
 -- system (ie. not fixable). Tuning the range seems to make this more
 -- difficult. Not sure why. It's that kind of crash.
 -- @realm shared
-local cvWepCarryRange = CreateConVar("ttt_weapon_carrying_range", "50", CV_FLAGS_SHARED)
+local cvWepCarryRange = CreateConVar("ttt_weapon_carrying_range", 50, CV_FLAGS_SHARED)
 
 CARRY_TYPE_NONE = 0
 CARRY_TYPE_PROP = 1

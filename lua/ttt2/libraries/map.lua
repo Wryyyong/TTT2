@@ -507,27 +507,27 @@ if SERVER then
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_cs", "0", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_cs", 0, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_de", "0", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_de", 0, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_gm", "0", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_gm", 0, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_test", "0", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_test", 0, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_ttt", "1", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_ttt", 1, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- @realm server
-    CreateConVar("ttt2_enable_map_prefix_ttt2", "1", CV_FLAGS_SERVER_SILENT)
+    CreateConVar("ttt2_enable_map_prefix_ttt2", 1, CV_FLAGS_SERVER_SILENT)
 
     ---
     -- Initializes the map list. Searches the file system for available maps, scans those maps
@@ -583,7 +583,7 @@ if SERVER then
 
             ---
             -- @realm server
-            CreateConVar(convarName, "0", CV_FLAGS_SERVER_SILENT)
+            CreateConVar(convarName, 0, CV_FLAGS_SERVER_SILENT)
 
             -- because these convars are generated dynamically, replicated convars do not work here
             SetGlobalBool(convarName, GetConVar(convarName):GetBool())

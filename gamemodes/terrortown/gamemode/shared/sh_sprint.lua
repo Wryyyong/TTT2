@@ -4,44 +4,39 @@ SPRINT = {
     -- Set up ConVars
     convars = {
         -- @realm shared
-        enabled = CreateConVar(
-            "ttt2_sprint_enabled",
-            "1",
-            CV_FLAGS_SHARED,
-            "Toggle Sprint (Def: 1)"
-        ),
+        enabled = CreateConVar("ttt2_sprint_enabled", 1, CV_FLAGS_SHARED, "Toggle Sprint (Def: 1)"),
         -- @realm shared
         multiplier = CreateConVar(
             "ttt2_sprint_max",
-            "0.5",
+            0.5,
             CV_FLAGS_SHARED,
             "The speed modifier the player will receive. Will be added on top of 1, so 0.5 => 1.5 speed. (Def: 0.5)"
         ),
         -- @realm shared
         consumption = CreateConVar(
             "ttt2_sprint_stamina_consumption",
-            "0.6",
+            0.6,
             CV_FLAGS_SHARED,
             "The speed of the stamina consumption (per second; Def: 0.6)"
         ),
         -- @realm shared
         regeneration = CreateConVar(
             "ttt2_sprint_stamina_regeneration",
-            "0.3",
+            0.3,
             CV_FLAGS_SHARED,
             "The regeneration time of the stamina (per second; Def: 0.3)"
         ),
         -- @realm shared
         cooldown = CreateConVar(
             "ttt2_sprint_stamina_cooldown",
-            "0.8",
+            0.8,
             CV_FLAGS_SHARED,
             "Time before stamina begins regenerating after sprinting (in seconds; Def: 0.8)"
         ),
         -- @realm shared
         forwards_only = CreateConVar(
             "ttt2_sprint_forwards_only",
-            "1",
+            1,
             CV_FLAGS_SHARED,
             "Disallow sprinting backwards or laterally (Def: 1)"
         ),

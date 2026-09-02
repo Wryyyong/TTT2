@@ -51,7 +51,7 @@ util.AddNetworkString("TTT2SendConfirmMsg")
 -- @realm server
 CORPSE.cv.announce_body_found = CreateConVar(
     "ttt_announce_body_found",
-    "1",
+    1,
     CV_FLAGS_SERVER,
     "If detective mode, announce when someone's body is found"
 )
@@ -59,16 +59,16 @@ CORPSE.cv.announce_body_found = CreateConVar(
 ---
 -- @realm server
 CORPSE.cv.confirm_team =
-    CreateConVar("ttt2_confirm_team", "0", CV_FLAGS_SERVER, "Show team of confirmed player")
+    CreateConVar("ttt2_confirm_team", 0, CV_FLAGS_SERVER, "Show team of confirmed player")
 
 ---
 -- @realm server
 CORPSE.cv.confirm_killlist =
-    CreateConVar("ttt2_confirm_killlist", "1", CV_FLAGS_SERVER, "Confirm players in kill list")
+    CreateConVar("ttt2_confirm_killlist", 1, CV_FLAGS_SERVER, "Confirm players in kill list")
 
 ---
 -- @realm server
-CORPSE.cv.ragdoll_collide = CreateConVar("ttt_ragdoll_collide", "0", CV_FLAGS_SERVER)
+CORPSE.cv.ragdoll_collide = CreateConVar("ttt_ragdoll_collide", 0, CV_FLAGS_SERVER)
 
 -- networked data abstraction layer
 local dti = CORPSE.dti

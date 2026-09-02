@@ -34,7 +34,7 @@ local cv_ttt_scoreboard_sorting = CreateConVar(
 -- @realm client
 local cv_ttt_scoreboard_ascending = CreateConVar(
     "ttt_scoreboard_ascending",
-    "1",
+    1,
     CV_FLAGS_CLIENT,
     "Should scoreboard ordering be in ascending order"
 )

@@ -8,7 +8,7 @@ dmgindicator = {
     cv = {
         ---
         -- @realm client
-        enable = CreateConVar("ttt_dmgindicator_enable", "1", CV_FLAGS_CLIENT),
+        enable = CreateConVar("ttt_dmgindicator_enable", 1, CV_FLAGS_CLIENT),
 
         ---
         -- @realm client
@@ -16,15 +16,15 @@ dmgindicator = {
 
         ---
         -- @realm client
-        duration = CreateConVar("ttt_dmgindicator_duration", "1.5", CV_FLAGS_CLIENT),
+        duration = CreateConVar("ttt_dmgindicator_duration", 1.5, CV_FLAGS_CLIENT),
 
         ---
         -- @realm client
-        maxdamage = CreateConVar("ttt_dmgindicator_maxdamage", "50.0", CV_FLAGS_CLIENT),
+        maxdamage = CreateConVar("ttt_dmgindicator_maxdamage", 50, CV_FLAGS_CLIENT),
 
         ---
         -- @realm client
-        maxalpha = CreateConVar("ttt_dmgindicator_maxalpha", "255", CV_FLAGS_CLIENT),
+        maxalpha = CreateConVar("ttt_dmgindicator_maxalpha", 255, CV_FLAGS_CLIENT),
     },
 }
 
