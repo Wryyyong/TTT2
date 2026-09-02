@@ -14,15 +14,15 @@ WSWITCH = {
     cv = {
         ---
         -- @realm client
-        hide = CreateConVar("ttt_weaponswitcher_hide", "1", FCVAR_ARCHIVE),
+        hide = CreateConVar("ttt_weaponswitcher_hide", "1", CV_FLAGS_CLIENT),
 
         ---
         -- @realm client
-        fast = CreateConVar("ttt_weaponswitcher_fast", "0", FCVAR_ARCHIVE),
+        fast = CreateConVar("ttt_weaponswitcher_fast", "0", CV_FLAGS_CLIENT),
 
         ---
         -- @realm client
-        display = CreateConVar("ttt_weaponswitcher_displayfast", "0", FCVAR_ARCHIVE),
+        display = CreateConVar("ttt_weaponswitcher_displayfast", "0", CV_FLAGS_CLIENT),
     },
 }
 

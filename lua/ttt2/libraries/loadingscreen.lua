@@ -9,20 +9,9 @@ if SERVER then
 end
 
 ---
--- @realm server
-local cvLoadingScreenEnabled = CreateConVar(
-    "ttt2_enable_loadingscreen_server",
-    "1",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED }
-)
-
----
--- @realm server
-local cvLoadingScreenMinDuration = CreateConVar(
-    "ttt2_loadingscreen_min_duration",
-    "4",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED }
-)
+-- @realm shared
+local cvLoadingScreenEnabled =
+    CreateConVar("ttt2_enable_loadingscreen_server", "1", CV_FLAGS_SHARED)
 
 loadingscreen = loadingscreen or {}
 
@@ -98,6 +87,11 @@ function loadingscreen.End()
 end
 
 if SERVER then
+    ---
+    -- @realm server
+    local cvLoadingScreenMinDuration =
+        CreateConVar("ttt2_loadingscreen_min_duration", "4", CV_FLAGS_SERVER)
+
     -- mutes the sound while the loading screen is shown
     -- this makes it so that you can't hear weapons spawning
     hook.Add("EntityEmitSound", "TTT2PreventReloadingSound", function(data)
@@ -129,11 +123,11 @@ if CLIENT then
 
     ---
     -- @realm client
-    local cvLoadingScreen = CreateConVar("ttt2_enable_loadingscreen", "1", { FCVAR_ARCHIVE })
+    local cvLoadingScreen = CreateConVar("ttt2_enable_loadingscreen", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvLoadingScreenTips = CreateConVar("ttt_tips_enable", "1", { FCVAR_ARCHIVE })
+    local cvLoadingScreenTips = CreateConVar("ttt_tips_enable", "1", CV_FLAGS_CLIENT)
 
     loadingscreen.state = LS_HIDDEN
     loadingscreen.timeStateChange = SysTime()

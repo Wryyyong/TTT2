@@ -129,6 +129,32 @@ REVIVAL_BLOCK_ALL = 2
 
 REVIVAL_BITS = 2
 
+-- common convar flags
+
+local function CleanBitwiseOrConVarFlags(flagTbl)
+    return bit.bor(unpack(flagTbl))
+end
+
+CV_FLAGS_CLIENT = CleanBitwiseOrConVarFlags({
+    FCVAR_ARCHIVE,
+})
+
+CV_FLAGS_SERVER = CleanBitwiseOrConVarFlags({
+    FCVAR_ARCHIVE,
+    FCVAR_NOTIFY,
+})
+
+-- for replicated convars across both realms
+CV_FLAGS_SHARED = CleanBitwiseOrConVarFlags({
+    SERVER and CV_FLAGS_SERVER or FCVAR_NONE, -- only save values serverside
+    FCVAR_REPLICATED,
+})
+
+-- for server/shared convars that shouldn't notify clients when changed
+local notifyInverted = bit.bnot(FCVAR_NOTIFY)
+CV_FLAGS_SERVER_SILENT = bit.band(CV_FLAGS_SERVER, notifyInverted)
+CV_FLAGS_SHARED_SILENT = bit.band(CV_FLAGS_SHARED, notifyInverted)
+
 -- if you add roles that can shop, modify DefaultEquipment at the end of this file
 
 -- just compatibality functions

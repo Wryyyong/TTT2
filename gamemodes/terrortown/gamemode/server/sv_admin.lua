@@ -129,26 +129,23 @@ concommand.Add("ttt_print_karma", PrintKarma)
 
 ---
 -- @realm server
-local cv_ttt_highlight_admins =
-    CreateConVar("ttt_highlight_admins", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_highlight_admins = CreateConVar("ttt_highlight_admins", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cv_ttt_highlight_dev = CreateConVar("ttt_highlight_dev", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_highlight_dev = CreateConVar("ttt_highlight_dev", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cv_ttt_highlight_vip = CreateConVar("ttt_highlight_vip", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_highlight_vip = CreateConVar("ttt_highlight_vip", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cv_ttt_highlight_addondev =
-    CreateConVar("ttt_highlight_addondev", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_highlight_addondev = CreateConVar("ttt_highlight_addondev", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cv_ttt_highlight_supporter =
-    CreateConVar("ttt_highlight_supporter", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_highlight_supporter = CreateConVar("ttt_highlight_supporter", "1", CV_FLAGS_SERVER)
 
 hook.Add("TTT2SyncGlobals", "AddScoreboardGlobals", function()
     SetGlobalBool(cv_ttt_highlight_admins:GetName(), cv_ttt_highlight_admins:GetBool())
@@ -176,12 +173,11 @@ end)
 
 ---
 -- @realm server
-local dmglog_console =
-    CreateConVar("ttt_log_damage_for_console", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local dmglog_console = CreateConVar("ttt_log_damage_for_console", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local dmglog_save = CreateConVar("ttt_damagelog_save", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local dmglog_save = CreateConVar("ttt_damagelog_save", "0", CV_FLAGS_SERVER)
 
 local function PrintDamageLog(ply)
     local pr = GetPrintFn(ply)
@@ -253,7 +249,7 @@ end
 
 ---
 -- @realm server
-local ttt_bantype = CreateConVar("ttt_ban_type", "autodetect", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local ttt_bantype = CreateConVar("ttt_ban_type", "autodetect", CV_FLAGS_SERVER)
 
 local function DetectServerPlugin()
     if ULib and ULib.kickban then

@@ -86,14 +86,13 @@ local function SetupData(roleData)
 
     local conVarData = roleData.conVarData or {}
 
-    -- shared
-    if not roleData.notSelectable and SERVER then
+    if SERVER and not roleData.notSelectable then
         ---
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.name .. "_pct",
             tostring(conVarData.pct or 1),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         ---
@@ -101,7 +100,7 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.name .. "_max",
             tostring(conVarData.maximum or 1),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         ---
@@ -109,7 +108,7 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.name .. "_min_players",
             tostring(conVarData.minPlayers or 1),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         -- if we don't compare detective here, roles will never get assigned
@@ -119,7 +118,7 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_" .. roleData.name .. "_karma_min",
                 tostring(conVarData.minKarma or 0),
-                { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+                CV_FLAGS_SERVER
             )
 
             ---
@@ -127,16 +126,12 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_" .. roleData.name .. "_random",
                 tostring(conVarData.random or 100),
-                { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+                CV_FLAGS_SERVER
             )
 
             ---
             -- @realm server
-            CreateConVar(
-                "ttt_" .. roleData.name .. "_enabled",
-                "1",
-                { FCVAR_NOTIFY, FCVAR_ARCHIVE }
-            )
+            CreateConVar("ttt_" .. roleData.name .. "_enabled", "1", CV_FLAGS_SERVER)
         end
     end
 
@@ -145,7 +140,7 @@ local function SetupData(roleData)
     CreateConVar(
         "ttt_" .. roleData.name .. "_traitor_button",
         tostring(conVarData.traitorButton or 0),
-        SERVER and { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED } or FCVAR_REPLICATED
+        CV_FLAGS_SHARED
     )
 
     ---
@@ -153,7 +148,7 @@ local function SetupData(roleData)
     CreateConVar(
         "ttt2_ragdoll_pinning_" .. roleData.name,
         tostring(conVarData.ragdollPinning or 0),
-        SERVER and { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED } or FCVAR_REPLICATED
+        CV_FLAGS_SHARED
     )
 
     if SERVER then
@@ -162,7 +157,7 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_starting",
             tostring(conVarData.credits or 0),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         ---
@@ -170,7 +165,7 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_dead_enb",
             tostring(conVarData.creditsAwardDeadEnable or 0),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         ---
@@ -178,7 +173,7 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_kill_enb",
             tostring(conVarData.creditsAwardKillEnable or 0),
-            { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+            CV_FLAGS_SERVER
         )
 
         local shopFallbackValue
@@ -197,7 +192,7 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_" .. roleData.abbr .. "_shop_fallback",
                 shopFallbackValue,
-                { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+                CV_FLAGS_SERVER
             ):GetString()
         )
 
@@ -207,7 +202,7 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_credits_" .. roleData.name .. "kill",
                 tostring(conVarData.traitorKill),
-                { FCVAR_NOTIFY, FCVAR_ARCHIVE }
+                CV_FLAGS_SERVER
             )
         end
     else -- CLIENT

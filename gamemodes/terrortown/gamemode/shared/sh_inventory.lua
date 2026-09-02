@@ -7,7 +7,7 @@ if SERVER then
     local maxMeleeSlots = CreateConVar(
         "ttt2_max_melee_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of melee weapons, a player can carry (-1 = infinite)"
     )
 
@@ -16,7 +16,7 @@ if SERVER then
     local maxSecondarySlots = CreateConVar(
         "ttt2_max_secondary_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of secondary weapons, a player can carry (-1 = infinite)"
     )
 
@@ -25,7 +25,7 @@ if SERVER then
     local maxPrimarySlots = CreateConVar(
         "ttt2_max_primary_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of primary weapons, a player can carry (-1 = infinite)"
     )
 
@@ -34,7 +34,7 @@ if SERVER then
     local maxNadeSlots = CreateConVar(
         "ttt2_max_nade_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of grenades, a player can carry (-1 = infinite)"
     )
 
@@ -43,7 +43,7 @@ if SERVER then
     local maxCarrySlots = CreateConVar(
         "ttt2_max_carry_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of carry tools, a player can carry (-1 = infinite)"
     )
 
@@ -52,7 +52,7 @@ if SERVER then
     local maxUnarmedSlots = CreateConVar(
         "ttt2_max_unarmed_slots",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of unarmed slots, a player can have (-1 = infinite)"
     )
 
@@ -61,7 +61,7 @@ if SERVER then
     local maxSpecialSlots = CreateConVar(
         "ttt2_max_special_slots",
         "2",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of special weapons, a player can carry (-1 = infinite)"
     )
 
@@ -70,7 +70,7 @@ if SERVER then
     local maxExtraSlots = CreateConVar(
         "ttt2_max_extra_slots",
         "-1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Maximum amount of extra weapons, a player can carry (-1 = infinite)"
     )
 

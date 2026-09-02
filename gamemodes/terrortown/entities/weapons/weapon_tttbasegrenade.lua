@@ -62,8 +62,7 @@ AccessorFunc(SWEP, "pull_time", "PullTime", FORCE_NUMBER)
 
 ---
 -- @realm server
-local cvNadeThrowDuringPrep =
-    CreateConVar("ttt_nade_throw_during_prep", "0", { FCVAR_ARCHIVE, FCVAR_NOTIFY })
+local cvNadeThrowDuringPrep = CreateConVar("ttt_nade_throw_during_prep", "0", CV_FLAGS_SERVER)
 
 ---
 -- @ignore
@@ -103,7 +102,7 @@ end
 if CLIENT then
     ---
     -- @realm client
-    local cvEnableTrajectoryUI = CreateConVar("ttt2_grenade_trajectory_ui", 0, FCVAR_ARCHIVE)
+    local cvEnableTrajectoryUI = CreateConVar("ttt2_grenade_trajectory_ui", 0, CV_FLAGS_CLIENT)
 
     local cvCrosshairOpacity = GetConVar("ttt_crosshair_opacity")
 

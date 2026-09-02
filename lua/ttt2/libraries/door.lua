@@ -16,21 +16,6 @@ if SERVER then
 end
 
 ---
--- @realm client
-local cvDestructableDoorForced =
-    CreateConVar("ttt2_doors_force_pairs", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
-
----
--- @realm client
-local cvDestructableDoor =
-    CreateConVar("ttt2_doors_destructible", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
-
----
--- @realm client
-local cvDestructableDoorLocked =
-    CreateConVar("ttt2_doors_locked_indestructible", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
-
----
 -- DOOR SPAWNFLAG ENUMS
 -- @ref https://developer.valvesoftware.com/wiki/prop_door_rotating
 -- @ref https://developer.valvesoftware.com/wiki/func_door
@@ -109,35 +94,6 @@ local function FindPair(ent)
     end
 end
 
-local function HandleDoorPairs(ent)
-    local master = ent:GetInternalVariable("m_hMaster")
-    local owner = ent:GetInternalVariable("m_hOwnerEntity")
-
-    local pair, rigged
-
-    if IsValid(master) then
-        pair = master
-    elseif IsValid(owner) then
-        pair = owner
-    elseif cvDestructableDoorForced:GetBool() then
-        pair = FindPair(ent)
-        rigged = true
-    end
-
-    if not IsValid(pair) then
-        return
-    end
-
-    ent.otherPairDoor = pair
-    pair.otherPairDoor = ent
-
-    -- add flag if door combo was rigged
-    if rigged then
-        ent.otherPairRigged = true
-        pair.otherPairRigged = true
-    end
-end
-
 local function HandleUseCancel(ent)
     ent:EmitSound("doors/door_locked2.wav")
 end
@@ -159,6 +115,48 @@ local function AddSpawnFlag(ent, flag)
 end
 
 if SERVER then
+    ---
+    -- @realm server
+    local cvDestructableDoorForced = CreateConVar("ttt2_doors_force_pairs", "1", CV_FLAGS_SERVER)
+
+    ---
+    -- @realm server
+    local cvDestructableDoor = CreateConVar("ttt2_doors_destructible", "0", CV_FLAGS_SERVER)
+
+    ---
+    -- @realm server
+    local cvDestructableDoorLocked =
+        CreateConVar("ttt2_doors_locked_indestructible", "1", CV_FLAGS_SERVER)
+
+    local function HandleDoorPairs(ent)
+        local master = ent:GetInternalVariable("m_hMaster")
+        local owner = ent:GetInternalVariable("m_hOwnerEntity")
+
+        local pair, rigged
+
+        if IsValid(master) then
+            pair = master
+        elseif IsValid(owner) then
+            pair = owner
+        elseif cvDestructableDoorForced:GetBool() then
+            pair = FindPair(ent)
+            rigged = true
+        end
+
+        if not IsValid(pair) then
+            return
+        end
+
+        ent.otherPairDoor = pair
+        pair.otherPairDoor = ent
+
+        -- add flag if door combo was rigged
+        if rigged then
+            ent.otherPairRigged = true
+            pair.otherPairRigged = true
+        end
+    end
+
     ---
     -- Setting up all doors found on a map, this is done on every map reset (on prepare round)
     -- @internal

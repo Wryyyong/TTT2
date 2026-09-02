@@ -26,7 +26,7 @@ ttt_include("vgui__cl_sb_team")
 local cv_ttt_scoreboard_sorting = CreateConVar(
     "ttt_scoreboard_sorting",
     "name",
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "name | role | karma | score | deaths | ping"
 )
 
@@ -35,7 +35,7 @@ local cv_ttt_scoreboard_sorting = CreateConVar(
 local cv_ttt_scoreboard_ascending = CreateConVar(
     "ttt_scoreboard_ascending",
     "1",
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Should scoreboard ordering be in ascending order"
 )
 

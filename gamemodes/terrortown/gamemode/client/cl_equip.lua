@@ -18,7 +18,7 @@ local hook = hook
 local numColsVar = CreateConVar(
     "ttt_bem_cols",
     5,
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Sets the number of columns in the Traitor/Detective menu's item list."
 )
 
@@ -27,7 +27,7 @@ local numColsVar = CreateConVar(
 local numRowsVar = CreateConVar(
     "ttt_bem_rows",
     6,
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Sets the number of rows in the Traitor/Detective menu's item list."
 )
 
@@ -36,31 +36,31 @@ local numRowsVar = CreateConVar(
 local itemSizeVar = CreateConVar(
     "ttt_bem_size",
     64,
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Sets the item size in the Traitor/Detective menu's item list."
 )
 
 ---
 -- @realm client
 local showCustomVar =
-    CreateConVar("ttt_bem_marker_custom", 1, FCVAR_ARCHIVE, "Should custom items get a marker?")
+    CreateConVar("ttt_bem_marker_custom", 1, CV_FLAGS_CLIENT, "Should custom items get a marker?")
 
 ---
 -- @realm client
 local showFavoriteVar =
-    CreateConVar("ttt_bem_marker_fav", 1, FCVAR_ARCHIVE, "Should favorite items get a marker?")
+    CreateConVar("ttt_bem_marker_fav", 1, CV_FLAGS_CLIENT, "Should favorite items get a marker?")
 
 ---
 -- @realm client
 local showSlotVar =
-    CreateConVar("ttt_bem_marker_slot", 1, FCVAR_ARCHIVE, "Should items get a slot-marker?")
+    CreateConVar("ttt_bem_marker_slot", 1, CV_FLAGS_CLIENT, "Should items get a slot-marker?")
 
 ---
 -- @realm client
 local alwaysShowShopVar = CreateConVar(
     "ttt_bem_always_show_shop",
     1,
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Should the shop be opened/closed instead of the score menu during preparing / at the end of a round?"
 )
 
@@ -69,7 +69,7 @@ local alwaysShowShopVar = CreateConVar(
 local enableDoubleClickBuy = CreateConVar(
     "ttt_bem_enable_doubleclick_buy",
     1,
-    FCVAR_ARCHIVE,
+    CV_FLAGS_CLIENT,
     "Sets if you will be able to double click on an Item to buy it."
 )
 

@@ -24,7 +24,7 @@ if SERVER then
     local ttt_min_inno_pct = CreateConVar(
         "ttt_min_inno_pct",
         "0.47",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Minimum multiplicator for each player to calculate the minimum amount of innocents"
     )
 

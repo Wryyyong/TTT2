@@ -270,7 +270,7 @@ local sparkle = CLIENT
         and CreateConVar(
             "ttt_crazy_sparks",
             "0",
-            FCVAR_ARCHIVE,
+            CV_FLAGS_CLIENT,
             "Toggles whether the `cball_bounce` Effect should get triggered on the hit position"
         )
     or nil
@@ -281,7 +281,7 @@ local ttt2_hold_aim = CLIENT
         and CreateConVar(
             "ttt2_hold_aim",
             0,
-            FCVAR_ARCHIVE,
+            CV_FLAGS_CLIENT,
             "Toogles whether you have to hold the key to aim",
             0,
             1
@@ -304,59 +304,61 @@ if CLIENT then
 
     ---
     -- @realm client
-    local cvOpacitySights = CreateConVar("ttt_ironsights_crosshair_opacity", "0.8", FCVAR_ARCHIVE)
+    local cvOpacitySights = CreateConVar("ttt_ironsights_crosshair_opacity", "0.8", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvSizeLineCrosshair = CreateConVar("ttt_crosshair_size", "1.0", FCVAR_ARCHIVE)
+    local cvSizeLineCrosshair = CreateConVar("ttt_crosshair_size", "1.0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvSizeGapCrosshair = CreateConVar("ttt_crosshair_size_gap", "1.0", FCVAR_ARCHIVE)
+    local cvSizeGapCrosshair = CreateConVar("ttt_crosshair_size_gap", "1.0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvEnableCrosshair = CreateConVar("ttt_enable_crosshair", "1", FCVAR_ARCHIVE)
+    local cvEnableCrosshair = CreateConVar("ttt_enable_crosshair", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvOpacityCrosshair = CreateConVar("ttt_crosshair_opacity", "1", FCVAR_ARCHIVE)
+    local cvOpacityCrosshair = CreateConVar("ttt_crosshair_opacity", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvCrosshairUseWeaponscale = CreateConVar("ttt_crosshair_weaponscale", "1", FCVAR_ARCHIVE)
+    local cvCrosshairUseWeaponscale =
+        CreateConVar("ttt_crosshair_weaponscale", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvCrosshairStaticLength = CreateConVar("ttt_crosshair_static_length", "0", FCVAR_ARCHIVE)
+    local cvCrosshairStaticLength =
+        CreateConVar("ttt_crosshair_static_length", "0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
     local cvCrosshairStaticGapLength =
-        CreateConVar("ttt_crosshair_static_gap_length", "0", FCVAR_ARCHIVE)
+        CreateConVar("ttt_crosshair_static_gap_length", "0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvThicknessCrosshair = CreateConVar("ttt_crosshair_thickness", "1", FCVAR_ARCHIVE)
+    local cvThicknessCrosshair = CreateConVar("ttt_crosshair_thickness", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
     local cvEnableOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_enable", "0", FCVAR_ARCHIVE)
+        CreateConVar("ttt_crosshair_outline_enable", "0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
     local cvThicknessOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_thickness", "1", FCVAR_ARCHIVE)
+        CreateConVar("ttt_crosshair_outline_thickness", "1", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
     local cvHighContrastOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_high_contrast", "0", FCVAR_ARCHIVE)
+        CreateConVar("ttt_crosshair_outline_high_contrast", "0", CV_FLAGS_CLIENT)
 
     ---
     -- @realm client
-    local cvCrosshairMode = CreateConVar("ttt_crosshair_mode", "0", FCVAR_ARCHIVE)
+    local cvCrosshairMode = CreateConVar("ttt_crosshair_mode", "0", CV_FLAGS_CLIENT)
 
     local cvEnableHUDBoxBlur = GetConVar("ttt2_hud_enable_box_blur")
 
@@ -1591,7 +1593,7 @@ end
 if CLIENT then
     ---
     -- @realm client
-    local ttt_lowered = CreateConVar("ttt_ironsights_lowered", "1", FCVAR_ARCHIVE)
+    local ttt_lowered = CreateConVar("ttt_ironsights_lowered", "1", CV_FLAGS_CLIENT)
 
     local host_timescale = GetConVar("host_timescale")
 

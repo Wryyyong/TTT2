@@ -9,7 +9,7 @@ local table = table
 ---
 -- @realm client
 -- @internal
-local changesVersion = CreateConVar("changes_version", "v0.0.0.0", FCVAR_ARCHIVE)
+local changesVersion = CreateConVar("changes_version", "v0.0.0.0", CV_FLAGS_CLIENT)
 
 local changes, currentVersion
 

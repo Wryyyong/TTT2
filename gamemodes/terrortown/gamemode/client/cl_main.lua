@@ -139,15 +139,14 @@ local TryT = LANG.TryTranslation
 
 ---
 -- @realm client
-local cvEnableBobbing = CreateConVar("ttt2_enable_bobbing", "1", FCVAR_ARCHIVE)
+local cvEnableBobbing = CreateConVar("ttt2_enable_bobbing", "1", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableBobbingStrafe = CreateConVar("ttt2_enable_bobbing_strafe", "1", FCVAR_ARCHIVE)
+local cvEnableBobbingStrafe = CreateConVar("ttt2_enable_bobbing_strafe", "1", CV_FLAGS_CLIENT)
 
 -- @realm client
-local cvEnableDynamicFOV =
-    CreateConVar("ttt2_enable_dynamic_fov", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cvEnableDynamicFOV = CreateConVar("ttt2_enable_dynamic_fov", "1", CV_FLAGS_CLIENT)
 
 cvars.AddChangeCallback("ttt2_enable_dynamic_fov", function(_, _, valueNew)
     LocalPlayer():SetSettingOnServer("enable_dynamic_fov", tobool(valueNew))

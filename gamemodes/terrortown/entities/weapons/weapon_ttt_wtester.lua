@@ -39,7 +39,7 @@ else
     local dna_mode = CreateConVar(
         "ttt2_dna_radar",
         "0",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Toggles the DNA Scanner functionality"
     )
 
@@ -48,7 +48,7 @@ else
     local dna_slots = CreateConVar(
         "ttt2_dna_scanner_slots",
         "4",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Defines the maximum amount of DNA slots"
     )
 
@@ -57,7 +57,7 @@ else
     local dna_radar_cd = CreateConVar(
         "ttt2_dna_radar_cooldown",
         "5.0",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+        CV_FLAGS_SERVER,
         "Defines the cooldown in seconds"
     )
 

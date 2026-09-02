@@ -6,7 +6,7 @@
 local current_hud_cvar = CreateConVar(
     "ttt2_current_hud",
     ttt2net.GetGlobal({ "hud_manager", "defaultHUD" }) or "pure_skin",
-    { FCVAR_ARCHIVE, FCVAR_USERINFO }
+    CV_FLAGS_CLIENT
 )
 
 local current_hud_table = nil

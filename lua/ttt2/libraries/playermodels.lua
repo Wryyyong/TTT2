@@ -18,10 +18,6 @@ local function GetPlayerSize(ply)
     return top - bottom
 end
 
----
--- @realm server
-local cvCustomModels = CreateConVar("ttt2_use_custom_models", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
-
 local initialDefaultStates = {
     selected = {
         ["css_phoenix"] = true,
@@ -175,6 +171,10 @@ end
 if CLIENT then
     return
 end
+
+---
+-- @realm server
+local cvCustomModels = CreateConVar("ttt2_use_custom_models", "0", CV_FLAGS_SERVER)
 
 ---
 -- Returns an indexed table with all the models that are in the selection pool.

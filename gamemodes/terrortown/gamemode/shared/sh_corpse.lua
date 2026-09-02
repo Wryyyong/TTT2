@@ -19,7 +19,7 @@ CORPSE.cv = {
     identify_body_woconfirm = CreateConVar(
         "ttt_identify_body_woconfirm",
         "1",
-        { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED },
+        CV_FLAGS_SHARED,
         "Toggles whether ragdolls should be confirmed in gameloop.IsDetectiveMode() without clicking on confirm espacially"
     ),
 }

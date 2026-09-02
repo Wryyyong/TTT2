@@ -620,7 +620,7 @@ if CLIENT then
     local cvDistanceUnit = CreateConVar(
         "ttt2_distance_unit",
         "1",
-        FCVAR_ARCHIVE,
+        CV_FLAGS_CLIENT,
         "Preferred unit of length (0 = inches, 1 = meters, 2 = yards, 3 = feet)"
     )
 

@@ -22,22 +22,18 @@ local MutedState
 VOICE.cv = {
     ---
     -- @realm client
-    duck_spectator = CreateConVar("ttt2_voice_duck_spectator", "0", { FCVAR_ARCHIVE }),
+    duck_spectator = CreateConVar("ttt2_voice_duck_spectator", "0", CV_FLAGS_CLIENT),
     ---
     -- @realm client
-    duck_spectator_amount = CreateConVar(
-        "ttt2_voice_duck_spectator_amount",
-        "0",
-        { FCVAR_ARCHIVE }
-    ),
+    duck_spectator_amount = CreateConVar("ttt2_voice_duck_spectator_amount", "0", CV_FLAGS_CLIENT),
 
     ---
     -- @realm client
-    scaling_mode = CreateConVar("ttt2_voice_scaling", "linear", { FCVAR_ARCHIVE }),
+    scaling_mode = CreateConVar("ttt2_voice_scaling", "linear", CV_FLAGS_CLIENT),
 
     ---
     -- @realm client
-    activation_mode = CreateConVar("ttt2_voice_activation", "ptt", { FCVAR_ARCHIVE }),
+    activation_mode = CreateConVar("ttt2_voice_activation", "ptt", CV_FLAGS_CLIENT),
 }
 
 local function CreateVoiceTable()

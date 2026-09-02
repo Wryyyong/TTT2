@@ -9,7 +9,7 @@ if SERVER then
     local cv_tbutton = CreateConVar(
         "ttt2_tbutton_admin_show",
         "0",
-        { FCVAR_ARCHIVE, FCVAR_NOTIFY },
+        CV_FLAGS_SERVER,
         "Always show the buttons to admins in range",
         0,
         1

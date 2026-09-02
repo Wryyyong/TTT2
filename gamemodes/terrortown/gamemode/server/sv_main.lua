@@ -68,64 +68,57 @@ local playerGetAll = player.GetAll
 
 ---
 -- @realm server
-local cvPreferMapModels =
-    CreateConVar("ttt2_prefer_map_models", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cvPreferMapModels = CreateConVar("ttt2_prefer_map_models", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cvSelectModelPerRound =
-    CreateConVar("ttt2_select_model_per_round", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cvSelectModelPerRound = CreateConVar("ttt2_select_model_per_round", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
 local cvSelectUniqueModelPerPlayer =
-    CreateConVar("ttt2_select_unique_model_per_player", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+    CreateConVar("ttt2_select_unique_model_per_player", "0", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-CreateConVar("ttt_haste_minutes_per_death", "0.5", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_haste_minutes_per_death", "0.5", CV_FLAGS_SERVER)
 
 -- Credits
 
 ---
 -- @realm server
-CreateConVar("ttt_credits_award_pct", "0.35", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_credits_award_pct", "0.35", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-CreateConVar("ttt_credits_award_size", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_credits_award_size", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-CreateConVar("ttt_credits_award_repeat", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_credits_award_repeat", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-CreateConVar("ttt_credits_award_kill", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_credits_award_kill", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local idle_enabled = CreateConVar("ttt_idle", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local idle_enabled = CreateConVar("ttt_idle", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local idle_time = CreateConVar("ttt_idle_limit", "180", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local idle_time = CreateConVar("ttt_idle_limit", "180", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-CreateConVar(
-    "ttt2_prep_respawn",
-    "0",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE },
-    "Respawn if dead in preparing time"
-)
+CreateConVar("ttt2_prep_respawn", "0", CV_FLAGS_SERVER, "Respawn if dead in preparing time")
 
 ---
 -- @realm server
 local map_switch_delay = CreateConVar(
     "ttt2_map_switch_delay",
     "15",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+    CV_FLAGS_SERVER,
     "Time that passes before the map is changed after the last round ends or the timer runs out",
     0
 )
@@ -135,13 +128,13 @@ local map_switch_delay = CreateConVar(
 CreateConVar(
     "ttt_enforce_playermodel",
     "1",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE },
+    CV_FLAGS_SERVER,
     "Whether or not to enforce terrorist playermodels. Set to 0 for compatibility with Enhanced Playermodel Selector"
 )
 
 ---
 -- @realm server
-CreateConVar("ttt_newroles_enabled", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+CreateConVar("ttt_newroles_enabled", "1", CV_FLAGS_SERVER)
 
 -- Pool some network names.
 util.AddNetworkString("TTT_GameMsg")
@@ -389,7 +382,7 @@ function GM:InitPostEntity()
         ---
         -- @name ttt2_elem_toggled_[HUDELEMENT_NAME]
         -- @realm server
-        local ret = CreateConVar(nm, "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+        local ret = CreateConVar(nm, "1", CV_FLAGS_SERVER)
 
         SetGlobalBool(nm, ret:GetBool())
 

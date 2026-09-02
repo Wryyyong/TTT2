@@ -22,27 +22,23 @@ local sv_voiceenable = GetConVar("sv_voiceenable")
 
 ---
 -- @realm server
-local cv_ttt_limit_spectator_voice =
-    CreateConVar("ttt_limit_spectator_voice", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local cv_ttt_limit_spectator_voice = CreateConVar("ttt_limit_spectator_voice", "1", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local loc_voice = CreateConVar("ttt_locational_voice", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local loc_voice = CreateConVar("ttt_locational_voice", "0", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local loc_voice_team =
-    CreateConVar("ttt_locational_voice_team", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local loc_voice_team = CreateConVar("ttt_locational_voice_team", "0", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local loc_voice_prep =
-    CreateConVar("ttt_locational_voice_prep", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local loc_voice_prep = CreateConVar("ttt_locational_voice_prep", "0", CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local loc_voice_range =
-    CreateConVar("ttt_locational_voice_range", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local loc_voice_range = CreateConVar("ttt_locational_voice_range", "0", CV_FLAGS_SERVER)
 
 local loc_voice_range_sq = loc_voice_range:GetInt() ^ 2
 

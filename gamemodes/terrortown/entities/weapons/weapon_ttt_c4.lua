@@ -26,19 +26,14 @@ end
 
 ---
 -- @realm shared
-CreateConVar(
-    "ttt2_c4_radius",
-    "600",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED },
-    "Defines the damage radius of C4 explosions"
-)
+CreateConVar("ttt2_c4_radius", "600", CV_FLAGS_SHARED, "Defines the damage radius of C4 explosions")
 
 ---
 -- @realm shared
 CreateConVar(
     "ttt2_c4_radius_inner",
     "500",
-    { FCVAR_NOTIFY, FCVAR_ARCHIVE, FCVAR_REPLICATED },
+    CV_FLAGS_SHARED,
     "Defines the kill radius of C4 explosions"
 )
 

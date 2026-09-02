@@ -5,7 +5,7 @@ local IsValid = IsValid
 
 ---
 -- @realm client
-CreateConVar("ttt_spectator_mode", "0", FCVAR_ARCHIVE)
+CreateConVar("ttt_spectator_mode", "0", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client

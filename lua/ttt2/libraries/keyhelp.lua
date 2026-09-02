@@ -59,23 +59,23 @@ local materialLeaveVehicle = Material("vgui/ttt/hudhelp/leave_vehicle")
 
 ---
 -- @realm client
-local cvEnableCore = CreateConVar("ttt2_keyhelp_show_core", "1", FCVAR_ARCHIVE)
+local cvEnableCore = CreateConVar("ttt2_keyhelp_show_core", "1", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableExtra = CreateConVar("ttt2_keyhelp_show_extra", "0", FCVAR_ARCHIVE)
+local cvEnableExtra = CreateConVar("ttt2_keyhelp_show_extra", "0", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableEquipment = CreateConVar("ttt2_keyhelp_show_equipment", "1", FCVAR_ARCHIVE)
+local cvEnableEquipment = CreateConVar("ttt2_keyhelp_show_equipment", "1", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableBoxBlur = CreateConVar("ttt2_hud_enable_box_blur", "1", FCVAR_ARCHIVE)
+local cvEnableBoxBlur = CreateConVar("ttt2_hud_enable_box_blur", "1", CV_FLAGS_CLIENT)
 
 ---
 -- @realm client
-local cvEnableDescription = CreateConVar("ttt2_hud_enable_description", "1", FCVAR_ARCHIVE)
+local cvEnableDescription = CreateConVar("ttt2_hud_enable_description", "1", CV_FLAGS_CLIENT)
 
 local cvPropspecToggle -- Cached later in the key register function
 

@@ -12,83 +12,83 @@ KARMA = {
 KARMA.cv = {
     ---
     -- @realm server
-    enabled = CreateConVar("ttt_karma", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    enabled = CreateConVar("ttt_karma", "1", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    strict = CreateConVar("ttt_karma_strict", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    strict = CreateConVar("ttt_karma_strict", "1", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    starting = CreateConVar("ttt_karma_starting", "1000", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    starting = CreateConVar("ttt_karma_starting", "1000", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    max = CreateConVar("ttt_karma_max", "1000", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    max = CreateConVar("ttt_karma_max", "1000", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    ratio = CreateConVar("ttt_karma_ratio", "0.001", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    ratio = CreateConVar("ttt_karma_ratio", "0.001", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    killpenalty = CreateConVar("ttt_karma_kill_penalty", "15", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    killpenalty = CreateConVar("ttt_karma_kill_penalty", "15", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    roundheal = CreateConVar("ttt_karma_round_increment", "5", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    roundheal = CreateConVar("ttt_karma_round_increment", "5", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    clean = CreateConVar("ttt_karma_clean_bonus", "30", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    clean = CreateConVar("ttt_karma_clean_bonus", "30", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    tbonus = CreateConVar("ttt_karma_traitorkill_bonus", "40", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    tbonus = CreateConVar("ttt_karma_traitorkill_bonus", "40", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    tratio = CreateConVar("ttt_karma_traitordmg_ratio", "0.0003", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    tratio = CreateConVar("ttt_karma_traitordmg_ratio", "0.0003", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    debug = CreateConVar("ttt_karma_debugspam", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    debug = CreateConVar("ttt_karma_debugspam", "0", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    persist = CreateConVar("ttt_karma_persist", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    persist = CreateConVar("ttt_karma_persist", "0", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    falloff = CreateConVar("ttt_karma_clean_half", "0.25", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    falloff = CreateConVar("ttt_karma_clean_half", "0.25", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    autokick = CreateConVar("ttt_karma_low_autokick", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    autokick = CreateConVar("ttt_karma_low_autokick", "1", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    kicklevel = CreateConVar("ttt_karma_low_amount", "450", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    kicklevel = CreateConVar("ttt_karma_low_amount", "450", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    autoban = CreateConVar("ttt_karma_low_ban", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    autoban = CreateConVar("ttt_karma_low_ban", "1", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    bantime = CreateConVar("ttt_karma_low_ban_minutes", "60", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    bantime = CreateConVar("ttt_karma_low_ban_minutes", "60", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    damagescaling = CreateConVar("ttt2_karma_damage_scaling", "1", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    damagescaling = CreateConVar("ttt2_karma_damage_scaling", "1", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    healthscaling = CreateConVar("ttt2_karma_health_scaling", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    healthscaling = CreateConVar("ttt2_karma_health_scaling", "0", CV_FLAGS_SERVER),
 
     ---
     -- @realm server
-    healthmin = CreateConVar("ttt2_karma_health_min", "50", { FCVAR_NOTIFY, FCVAR_ARCHIVE }),
+    healthmin = CreateConVar("ttt2_karma_health_min", "50", CV_FLAGS_SERVER),
 }
 
 local config = KARMA.cv

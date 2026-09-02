@@ -114,7 +114,7 @@ if SERVER then
 
     ---
     -- @realm server
-    local cv_ttt_lang_serverdefault = CreateConVar("ttt_lang_serverdefault", "en", FCVAR_ARCHIVE)
+    local cv_ttt_lang_serverdefault = CreateConVar("ttt_lang_serverdefault", "en", CV_FLAGS_SERVER)
 
     local function ServerLangRequest(ply, cmd, args)
         if not IsValid(ply) then

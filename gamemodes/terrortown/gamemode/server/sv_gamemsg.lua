@@ -267,7 +267,7 @@ end
 ---
 -- @realm server
 local cv_ttt_spectators_chat_globally =
-    CreateConVar("ttt_spectators_chat_globally", "0", { FCVAR_ARCHIVE, FCVAR_NOTIFY })
+    CreateConVar("ttt_spectators_chat_globally", "0", CV_FLAGS_SERVER)
 
 ---
 -- Returns whether or not the @{Player} can see the other @{Player}'s chat.
@@ -410,7 +410,7 @@ end
 
 ---
 -- @realm server
-local ttt_lastwords = CreateConVar("ttt_lastwords_chatprint", "0", { FCVAR_NOTIFY, FCVAR_ARCHIVE })
+local ttt_lastwords = CreateConVar("ttt_lastwords_chatprint", "0", CV_FLAGS_SERVER)
 
 local LastWordContext = {
     [KILL_NORMAL] = "",

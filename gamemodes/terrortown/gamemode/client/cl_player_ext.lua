@@ -99,7 +99,7 @@ end
 
 ---
 -- @realm client
-local cv_ttt_show_gestures = CreateConVar("ttt_show_gestures", "1", FCVAR_ARCHIVE)
+local cv_ttt_show_gestures = CreateConVar("ttt_show_gestures", "1", CV_FLAGS_CLIENT)
 
 ---
 -- Perform the gesture using the GestureRunner system. If custom_runner is

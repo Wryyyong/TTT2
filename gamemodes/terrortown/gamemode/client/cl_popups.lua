@@ -77,7 +77,7 @@ end
 
 ---
 -- @realm client
-local startshowtime = CreateConVar("ttt_startpopup_duration", "17", FCVAR_ARCHIVE)
+local startshowtime = CreateConVar("ttt_startpopup_duration", "17", CV_FLAGS_CLIENT)
 
 local function drawFunc(s, w, h)
     draw.RoundedBox(8, 0, 0, w, h, s.paintColor)
