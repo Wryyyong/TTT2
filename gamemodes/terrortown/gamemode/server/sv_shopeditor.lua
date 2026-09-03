@@ -286,17 +286,21 @@ function ShopEditor.SetupShopEditorCVars()
     for i = 1, #rlsList do
         local v = rlsList[i]
 
-        local _func = function(convar_name, value_old, value_new)
-            if value_old == value_new then
-                return
+        cvars.AddChangeCallback(
+            "ttt_" .. v.abbr .. "_shop_fallback",
+            function(convar_name, value_old, value_new)
+                if value_old == value_new then
+                    return
+                end
+
+                Dev(
+                    1,
+                    convar_name .. ": Changing fallback from " .. value_old .. " to " .. value_new
+                )
+
+                SetGlobalString("ttt_" .. v.abbr .. "_shop_fallback", value_new)
+                ShopEditor.OnChangeWSCVar(v.index, value_new)
             end
-
-            Dev(1, convar_name .. ": Changing fallback from " .. value_old .. " to " .. value_new)
-
-            SetGlobalString("ttt_" .. v.abbr .. "_shop_fallback", value_new)
-            ShopEditor.OnChangeWSCVar(v.index, value_new)
-        end
-
-        cvars.AddChangeCallback("ttt_" .. v.abbr .. "_shop_fallback", _func)
+        )
     end
 end

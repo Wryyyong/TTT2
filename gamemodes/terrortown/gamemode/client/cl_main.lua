@@ -149,7 +149,7 @@ local cvEnableBobbingStrafe =
 -- @realm client
 local cvEnableDynamicFOV = CreateConVar("ttt2_enable_dynamic_fov", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
-cvars.AddChangeCallback("ttt2_enable_dynamic_fov", function(_, _, valueNew)
+cvars.AddChangeCallback(cvEnableDynamicFOV:GetName(), function(_, _, valueNew)
     LocalPlayer():SetSettingOnServer("enable_dynamic_fov", tobool(valueNew))
 end)
 

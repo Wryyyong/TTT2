@@ -121,23 +121,16 @@ end
 
 local math = math
 
-local function ttt_karma_max(cvar, old, new)
-    SetGlobalInt("ttt_karma_max", new)
-end
-cvars.AddChangeCallback("ttt_karma_max", ttt_karma_max)
-
-local function ttt_karma(cvar, old, new)
-    SetGlobalBool("ttt_karma", tobool(new))
-end
-cvars.AddChangeCallback("ttt_karma", ttt_karma)
+cvars.AddChangeCallback(KARMA.cv.enabled:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(KARMA.cv.max:GetName(), CommonCvarCallback_SetGlobalInt)
 
 ---
 -- Initializes the KARMA System
 -- @realm server
 -- @internal
 function KARMA.InitState()
-    SetGlobalBool("ttt_karma", config.enabled:GetBool())
-    SetGlobalInt("ttt_karma_max", config.max:GetFloat())
+    SetGlobalBool(KARMA.cv.enabled:GetName(), config.enabled:GetBool())
+    SetGlobalInt(KARMA.cv.max:GetName(), config.max:GetFloat())
 end
 
 ---
@@ -145,7 +138,7 @@ end
 -- @return boolean
 -- @realm server
 function KARMA.IsEnabled()
-    return GetGlobalBool("ttt_karma", false)
+    return GetGlobalBool(KARMA.cv.enabled:GetName(), false)
 end
 
 ---

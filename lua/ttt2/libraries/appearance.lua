@@ -50,6 +50,11 @@ local function SetCachedColor()
     )
 end
 
+cvars.AddChangeCallback(cv_global_color_r:GetName(), SetCachedColor)
+cvars.AddChangeCallback(cv_global_color_g:GetName(), SetCachedColor)
+cvars.AddChangeCallback(cv_global_color_b:GetName(), SetCachedColor)
+cvars.AddChangeCallback(cv_global_color_a:GetName(), SetCachedColor)
+
 appearance = appearance or {}
 appearance.callbacks = {}
 appearance.focusColor = nil
@@ -156,19 +161,6 @@ function appearance.GetFocusColor()
 
     return appearance.focusColor
 end
-
-cvars.AddChangeCallback(cv_global_color_r:GetName(), function(cv, old, new)
-    SetCachedColor()
-end)
-cvars.AddChangeCallback(cv_global_color_g:GetName(), function(cv, old, new)
-    SetCachedColor()
-end)
-cvars.AddChangeCallback(cv_global_color_b:GetName(), function(cv, old, new)
-    SetCachedColor()
-end)
-cvars.AddChangeCallback(cv_global_color_a:GetName(), function(cv, old, new)
-    SetCachedColor()
-end)
 
 ---
 -- Sets if the global focus color or the dynamic color should

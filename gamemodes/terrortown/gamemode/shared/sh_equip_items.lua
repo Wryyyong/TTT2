@@ -636,82 +636,86 @@ if SERVER then
         UpdateRandomShops(plys_with_fb, amount, team)
     end
 
-    cvars.AddChangeCallback("ttt2_random_shops", function(name, old, new)
+    cvars.AddChangeCallback(random_shops:GetName(), function(name, old, new)
         local tmp = tobool(new)
-        local amount = GetGlobalInt("ttt2_random_shop_items")
+        local amount = GetGlobalInt(random_shop_items:GetName())
 
-        SetGlobalBool("ttt2_random_shops", tmp)
+        SetGlobalBool(random_shops:GetName(), tmp)
 
         if tmp and amount > 0 then
-            UpdateRandomShops(nil, amount, GetGlobalBool("ttt2_random_team_shops", true))
+            UpdateRandomShops(nil, amount, GetGlobalBool(random_team_shops:GetName(), true))
         end
     end, "ttt2changeshops")
 
-    cvars.AddChangeCallback("ttt2_random_shop_items", function(name, old, new)
+    cvars.AddChangeCallback(random_shop_items:GetName(), function(name, old, new)
         local tmp = tonumber(new)
 
-        SetGlobalInt("ttt2_random_shop_items", tmp)
+        SetGlobalInt(random_shop_items:GetName(), tmp)
 
-        if GetGlobalBool("ttt2_random_shops") and tmp > 0 then
-            UpdateRandomShops(nil, tmp, GetGlobalBool("ttt2_random_team_shops", true))
+        if GetGlobalBool(random_shops:GetName()) and tmp > 0 then
+            UpdateRandomShops(nil, tmp, GetGlobalBool(random_team_shops:GetName(), true))
         end
     end, "ttt2changeshopitems")
 
-    cvars.AddChangeCallback("ttt2_random_team_shops", function(name, old, new)
+    cvars.AddChangeCallback(random_team_shops:GetName(), function(name, old, new)
         local tmp = tobool(new)
 
-        SetGlobalBool("ttt2_random_team_shops", tmp)
+        SetGlobalBool(random_team_shops:GetName(), tmp)
 
-        if new ~= old and GetGlobalBool("ttt2_random_shops", true) then
-            UpdateRandomShops(nil, GetGlobalInt("ttt2_random_shop_items"), tmp)
+        if new ~= old and GetGlobalBool(random_shops:GetName(), true) then
+            UpdateRandomShops(nil, GetGlobalInt(random_shop_items:GetName()), tmp)
         end
     end, "ttt2changeteamshops")
 
-    cvars.AddChangeCallback("ttt2_random_shop_reroll", function(name, old, new)
-        SetGlobalBool("ttt2_random_shop_reroll", tobool(new))
-    end, "ttt2updatererollglobal")
-
-    cvars.AddChangeCallback("ttt2_random_shop_reroll_cost", function(name, old, new)
-        SetGlobalInt("ttt2_random_shop_reroll_cost", tonumber(new))
-    end, "ttt2updatererollcostglobal")
-
-    cvars.AddChangeCallback("ttt2_random_shop_reroll_per_buy", function(name, old, new)
-        SetGlobalBool("ttt2_random_shop_reroll_per_buy", tobool(new))
-    end, "ttt2updatererollperbuyglobal")
+    cvars.AddChangeCallback(
+        random_shop_reroll:GetName(),
+        CommonCvarCallback_SetGlobalBool,
+        "ttt2updatererollglobal"
+    )
+    cvars.AddChangeCallback(
+        random_shop_reroll_cost:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "ttt2updatererollcostglobal"
+    )
+    cvars.AddChangeCallback(
+        random_shop_reroll_per_buy:GetName(),
+        CommonCvarCallback_SetGlobalBool,
+        "ttt2updatererollperbuyglobal"
+    )
 
     hook.Add("TTTPrepareRound", "TTT2InitRandomShops", function()
-        if not GetGlobalBool("ttt2_random_shops") then
+        if not GetGlobalBool(random_shops:GetName()) then
             return
         end
 
         UpdateRandomShops(
             nil,
-            GetGlobalInt("ttt2_random_shop_items"),
-            GetGlobalBool("ttt2_random_team_shops", true)
+            GetGlobalInt(random_shop_items:GetName()),
+            GetGlobalBool(random_team_shops:GetName(), true)
         )
     end)
 
     hook.Add("TTT2UpdateSubrole", "TTT2UpdateRandomShop", function(ply)
-        if not GetGlobalBool("ttt2_random_shops") then
+        if not GetGlobalBool(random_shops:GetName()) then
             return
         end
 
         UpdateRandomShops(
             { ply },
-            GetGlobalInt("ttt2_random_shop_items"),
-            GetGlobalBool("ttt2_random_team_shops", true)
+            GetGlobalInt(random_shop_items:GetName()),
+            GetGlobalBool(random_team_shops:GetName(), true)
         )
     end)
 
     hook.Add("PlayerInitialSpawn", "TTT2InitRandomShops", function(ply)
         local random_shop = random_shops:GetBool()
 
-        SetGlobalBool("ttt2_random_shops", random_shop)
-        SetGlobalInt("ttt2_random_shop_items", random_shop_items:GetInt())
-        SetGlobalBool("ttt2_random_team_shops", random_team_shops:GetBool())
-        SetGlobalBool("ttt2_random_shop_reroll", random_shop_reroll:GetBool())
-        SetGlobalInt("ttt2_random_shop_reroll_cost", random_shop_reroll_cost:GetInt())
-        SetGlobalBool("ttt2_random_shop_reroll_per_buy", random_shop_reroll_per_buy:GetBool())
+        SetGlobalBool(random_shops:GetName(), random_shop)
+        SetGlobalInt(random_shop_items:GetName(), random_shop_items:GetInt())
+        SetGlobalBool(random_team_shops:GetName(), random_team_shops:GetBool())
+        SetGlobalBool(random_shop_reroll:GetName(), random_shop_reroll:GetBool())
+        SetGlobalInt(random_shop_reroll_cost:GetName(), random_shop_reroll_cost:GetInt())
+        SetGlobalBool(random_shop_reroll_per_buy:GetName(), random_shop_reroll_per_buy:GetBool())
 
         if not random_shop then
             return

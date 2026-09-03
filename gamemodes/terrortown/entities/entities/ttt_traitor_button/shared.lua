@@ -15,13 +15,12 @@ if SERVER then
         1
     )
 
-    hook.Add("TTT2SyncGlobals", "AddTButtonGlobals", function()
+    local function AdminShowTButtonCallback()
         SetGlobalBool(cv_tbutton:GetName(), cv_tbutton:GetBool())
-    end)
+    end
 
-    cvars.AddChangeCallback(cv_tbutton:GetName(), function(cv, old, new)
-        SetGlobalBool(cv_tbutton:GetName(), tobool(tonumber(new)))
-    end)
+    hook.Add("TTT2SyncGlobals", "AddTButtonGlobals", AdminShowTButtonCallback)
+    cvars.AddChangeCallback(cv_tbutton:GetName(), AdminShowTButtonCallback)
 end
 
 if CLIENT then

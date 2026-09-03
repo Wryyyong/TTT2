@@ -94,37 +94,46 @@ if SERVER then
         SetGlobalInt("ttt2_max_class_slots", -1)
     end)
 
-    cvars.AddChangeCallback(maxMeleeSlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxMeleeSlotsChange")
-
-    cvars.AddChangeCallback(maxSecondarySlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxSecondarySlotsChange")
-
-    cvars.AddChangeCallback(maxPrimarySlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxPrimarySlotsChange")
-
-    cvars.AddChangeCallback(maxNadeSlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxNadeSlotsChange")
-
-    cvars.AddChangeCallback(maxCarrySlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxCarrySlotsChange")
-
-    cvars.AddChangeCallback(maxUnarmedSlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxUnarmedSlotsChange")
-
-    cvars.AddChangeCallback(maxSpecialSlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxSpecialSlotsChange")
-
-    cvars.AddChangeCallback(maxExtraSlots:GetName(), function(name, old, new)
-        SetGlobalInt(name, tonumber(new))
-    end, "TTT2MaxExtraSlotsChange")
+    cvars.AddChangeCallback(
+        maxMeleeSlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxMeleeSlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxSecondarySlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxSecondarySlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxPrimarySlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxPrimarySlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxNadeSlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxNadeSlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxCarrySlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxCarrySlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxUnarmedSlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxUnarmedSlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxSpecialSlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxSpecialSlotsChange"
+    )
+    cvars.AddChangeCallback(
+        maxExtraSlots:GetName(),
+        CommonCvarCallback_SetGlobalInt,
+        "TTT2MaxExtraSlotsChange"
+    )
 end
 
 ORDERED_SLOT_TABLE = {

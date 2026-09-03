@@ -5,27 +5,21 @@ local IsValid = IsValid
 
 ---
 -- @realm client
-CreateConVar("ttt_spectator_mode", 0, CV_FLAGS_CLIENT, nil, 0, 1)
+local cvSpectateMode = CreateConVar("ttt_spectator_mode", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
 ---
 -- @realm client
-CreateConVar("ttt_mute_team_check", 0, FCVAR_NONE, nil, 0, 1)
+local cvMuteTeamCheck = CreateConVar("ttt_mute_team_check", 0, FCVAR_NONE, nil, 0, 1)
 
-local function SpectateCallback(cv, old, new)
-    local num = tonumber(new)
+cvars.AddChangeCallback(cvSpectateMode:GetName(), function(cv, old, new)
+    RunConsoleCommand("ttt_spectate", new)
+end)
 
-    if num and (num == 0 or num == 1) then
-        RunConsoleCommand("ttt_spectate", num)
-    end
-end
-cvars.AddChangeCallback("ttt_spectator_mode", SpectateCallback)
-
-local function MuteTeamCallback(cv, old, new)
+cvars.AddChangeCallback(cvMuteTeamCheck:GetName(), function(cv, old, new)
     net.Start("TTT2MuteTeam")
     net.WriteBool(tobool(new))
     net.SendToServer()
-end
-cvars.AddChangeCallback("ttt_mute_team_check", MuteTeamCallback)
+end)
 
 -- LOAD HELP MENU PAGE CLASSES
 

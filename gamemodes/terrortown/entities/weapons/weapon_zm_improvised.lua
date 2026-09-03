@@ -320,9 +320,8 @@ if SERVER then
         end
     end
 
-    cvars.AddChangeCallback(cvCrowbarDelay:GetName(), ChangeShoveDelay, "TTT2CrowbarShoveDelay")
-
     hook.Add("TTT2Initialize", "TTT2ChangeMeleesSecondaryDelay", ChangeShoveDelay)
+    cvars.AddChangeCallback(cvCrowbarDelay:GetName(), ChangeShoveDelay, "TTT2CrowbarShoveDelay")
 end
 
 if CLIENT then

@@ -583,15 +583,13 @@ if SERVER then
 
             ---
             -- @realm server
-            CreateConVar(convarName, 0, CV_FLAGS_SERVER_SILENT, nil, 0, 1)
+            local newConVar = CreateConVar(convarName, 0, CV_FLAGS_SERVER_SILENT, nil, 0, 1)
 
             -- because these convars are generated dynamically, replicated convars do not work here
-            SetGlobalBool(convarName, GetConVar(convarName):GetBool())
+            SetGlobalBool(convarName, newConVar:GetBool())
 
             cvars.RemoveChangeCallback(convarName, convarName)
-            cvars.AddChangeCallback(convarName, function(convar, _, new)
-                SetGlobalBool(convar, tobool(new))
-            end, convarName)
+            cvars.AddChangeCallback(convarName, CommonCvarCallback_SetGlobalBool, convarName)
         end
     end
 

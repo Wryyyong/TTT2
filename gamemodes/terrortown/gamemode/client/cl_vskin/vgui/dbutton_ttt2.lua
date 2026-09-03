@@ -103,7 +103,7 @@ function PANEL:SetServerConVar(cvar)
     local myIdentifierString = "TTT2CheckBoxConVarChangeCallback"
         .. tostring(callbackEnabledVarTracker)
 
-    local callback = function(conVarName, oldValue, newValue)
+    cvars.AddChangeCallback(cvar, function(conVarName, oldValue, newValue)
         if not IsValid(self) then
             -- We need to remove the callback in a timer, because otherwise the ConVar change callback code
             -- will throw an error while looping over the callbacks.
@@ -117,9 +117,7 @@ function PANEL:SetServerConVar(cvar)
         end
 
         self:SetValue(tobool(newValue), true)
-    end
-
-    cvars.AddChangeCallback(cvar, callback, myIdentifierString)
+    end, myIdentifierString)
 end
 
 ---

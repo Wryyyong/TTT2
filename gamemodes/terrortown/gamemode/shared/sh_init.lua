@@ -1,6 +1,12 @@
 ---
 -- This file contains all shared vars, tables and functions
 
+local tobool = tobool
+local tonumber = tonumber
+local SetGlobalBool = SetGlobalBool
+local SetGlobalFloat = SetGlobalFloat
+local SetGlobalInt = SetGlobalInt
+
 GM.Name = "TTT2"
 GM.Author = "Bad King Urgrain, Alf21, saibotk, Mineotopia, LeBroomer, Histalek, ZenBre4ker"
 GM.Email = "ttt2@neoxult.de"
@@ -154,6 +160,24 @@ CV_FLAGS_SHARED = CleanBitwiseOrConVarFlags({
 local notifyInverted = bit.bnot(FCVAR_NOTIFY)
 CV_FLAGS_SERVER_SILENT = bit.band(CV_FLAGS_SERVER, notifyInverted)
 CV_FLAGS_SHARED_SILENT = bit.band(CV_FLAGS_SHARED, notifyInverted)
+
+---
+-- @ignore
+function CommonCvarCallback_SetGlobalBool(name, _, newVal)
+    SetGlobalBool(name, tobool(newVal))
+end
+
+---
+-- @ignore
+function CommonCvarCallback_SetGlobalInt(name, _, newVal)
+    SetGlobalInt(name, tonumber(newVal))
+end
+
+---
+-- @ignore
+function CommonCvarCallback_SetGlobalFloat(name, _, newVal)
+    SetGlobalFloat(name, tonumber(newVal))
+end
 
 -- if you add roles that can shop, modify DefaultEquipment at the end of this file
 

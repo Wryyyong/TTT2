@@ -117,17 +117,15 @@ hook.Add("TTT2SyncGlobals", "AddArmorGlobals", function()
     )
 end)
 
-cvars.AddChangeCallback(ARMOR.cv.armor_dynamic:GetName(), function(cv, old, new)
-    SetGlobalBool(ARMOR.cv.armor_dynamic:GetName(), tobool(tonumber(new)))
-end)
-
-cvars.AddChangeCallback(ARMOR.cv.armor_enable_reinforced:GetName(), function(cv, old, new)
-    SetGlobalBool(ARMOR.cv.armor_enable_reinforced:GetName(), tobool(tonumber(new)))
-end)
-
-cvars.AddChangeCallback(ARMOR.cv.armor_threshold_for_reinforced:GetName(), function(cv, old, new)
-    SetGlobalInt(ARMOR.cv.armor_threshold_for_reinforced:GetName(), tonumber(new))
-end)
+cvars.AddChangeCallback(ARMOR.cv.armor_dynamic:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(
+    ARMOR.cv.armor_enable_reinforced:GetName(),
+    CommonCvarCallback_SetGlobalBool
+)
+cvars.AddChangeCallback(
+    ARMOR.cv.armor_threshold_for_reinforced:GetName(),
+    CommonCvarCallback_SetGlobalInt
+)
 
 -- SERVERSIDE ARMOR FUNCTIONS
 

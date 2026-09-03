@@ -71,17 +71,9 @@ else
         SetGlobalFloat(dna_radar_cd:GetName(), dna_radar_cd:GetFloat())
     end)
 
-    cvars.AddChangeCallback(dna_mode:GetName(), function(name, old, new)
-        SetGlobalBool(dna_mode:GetName(), tobool(new))
-    end, dna_mode:GetName())
-
-    cvars.AddChangeCallback(dna_slots:GetName(), function(name, old, new)
-        SetGlobalInt(dna_slots:GetName(), tonumber(new))
-    end, dna_slots:GetName())
-
-    cvars.AddChangeCallback(dna_radar_cd:GetName(), function(name, old, new)
-        SetGlobalFloat(dna_radar_cd:GetName(), tonumber(new))
-    end, dna_radar_cd:GetName())
+    cvars.AddChangeCallback(dna_mode:GetName(), CommonCvarCallback_SetGlobalBool)
+    cvars.AddChangeCallback(dna_slots:GetName(), CommonCvarCallback_SetGlobalInt)
+    cvars.AddChangeCallback(dna_radar_cd:GetName(), CommonCvarCallback_SetGlobalFloat)
 end
 
 SWEP.Base = "weapon_tttbase"

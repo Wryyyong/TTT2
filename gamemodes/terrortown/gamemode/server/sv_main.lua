@@ -389,9 +389,7 @@ function GM:InitPostEntity()
 
         SetGlobalBool(nm, ret:GetBool())
 
-        cvars.AddChangeCallback(nm, function(cvarName, old, new)
-            SetGlobalBool(cvarName, tobool(new))
-        end, "CVAR_" .. nm)
+        cvars.AddChangeCallback(nm, CommonCvarCallback_SetGlobalBool, "CVAR_" .. nm)
     end
 
     -- initialize fallback shops
@@ -473,13 +471,8 @@ function GM:SyncGlobals()
     hook.Run("TTT2SyncGlobals")
 end
 
-cvars.AddChangeCallback(idle_time:GetName(), function(cv, old, new)
-    SetGlobalInt(idle_time:GetName(), tonumber(new))
-end)
-
-cvars.AddChangeCallback(idle_enabled:GetName(), function(cv, old, new)
-    SetGlobalBool(idle_enabled:GetName(), tobool(tonumber(new)))
-end)
+cvars.AddChangeCallback(idle_enabled:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(idle_time:GetName(), CommonCvarCallback_SetGlobalInt)
 
 ---
 -- This @{function} is used to load the shop equipments

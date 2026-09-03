@@ -49,17 +49,9 @@ hook.Add("TTT2SyncGlobals", "AddVoiceGlobals", function()
     SetGlobalBool(loc_voice_team:GetName(), loc_voice_team:GetBool())
 end)
 
-cvars.AddChangeCallback(sv_voiceenable:GetName(), function(cv, old, new)
-    SetGlobalBool(sv_voiceenable:GetName(), tobool(tonumber(new)))
-end)
-
-cvars.AddChangeCallback(loc_voice:GetName(), function(cv, old, new)
-    SetGlobalBool(loc_voice:GetName(), tobool(tonumber(new)))
-end)
-
-cvars.AddChangeCallback(loc_voice_team:GetName(), function(cv, old, new)
-    SetGlobalBool(loc_voice_team:GetName(), tobool(tonumber(new)))
-end)
+cvars.AddChangeCallback(sv_voiceenable:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(loc_voice:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(loc_voice_team:GetName(), CommonCvarCallback_SetGlobalBool)
 
 cvars.AddChangeCallback(loc_voice_range:GetName(), function(cv, old, new)
     loc_voice_range_sq = tonumber(new) ^ 2

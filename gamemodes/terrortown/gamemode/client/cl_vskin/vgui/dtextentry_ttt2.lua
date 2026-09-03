@@ -185,7 +185,7 @@ function PANEL:SetServerConVar(cvar)
         end
     end)
 
-    local function OnServerConVarChangeCallback(conVarName, oldValue, newValue)
+    cvars.AddChangeCallback(cvar, function(conVarName, oldValue, newValue)
         if not IsValid(self) then
             cvars.RemoveChangeCallback(conVarName, "TTT2F1MenuServerConVarChangeCallback")
 
@@ -193,13 +193,7 @@ function PANEL:SetServerConVar(cvar)
         end
 
         self:SetValue(tostring(newValue), true)
-    end
-
-    cvars.AddChangeCallback(
-        cvar,
-        OnServerConVarChangeCallback,
-        "TTT2F1MenuServerConVarChangeCallback"
-    )
+    end, "TTT2F1MenuServerConVarChangeCallback")
 end
 
 ---

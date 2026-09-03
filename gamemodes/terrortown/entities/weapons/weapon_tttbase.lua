@@ -1699,8 +1699,7 @@ if CLIENT then
     end
 
     hook.Add("InitPostEntity", "TTT2InitHoldAimCV", UpdateHoldAimCV)
-
-    cvars.AddChangeCallback("ttt2_hold_aim", UpdateHoldAimCV)
+    cvars.AddChangeCallback(ttt2_hold_aim:GetName(), UpdateHoldAimCV)
 else
     net.Receive("TTT2UpdateHoldAimConvar", function(_, ply)
         ply.holdAim = net.ReadBool()

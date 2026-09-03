@@ -421,7 +421,7 @@ local function AddConVarChangeCallback(panel, conVar)
     local myIdentifierString = "TTT2ComboboxConVarChangeCallback"
         .. tostring(callbackEnabledVarTracker)
 
-    local callback = function(conVarName, oldValue, newValue)
+    cvars.AddChangeCallback(conVar, function(conVarName, oldValue, newValue)
         if not IsValid(panel) then
             -- We need to remove the callback in a timer, because otherwise the ConVar change callback code
             -- will throw an error while looping over the callbacks.
@@ -435,9 +435,7 @@ local function AddConVarChangeCallback(panel, conVar)
         end
 
         panel:SetValue(newValue, true)
-    end
-
-    cvars.AddChangeCallback(conVar, callback, myIdentifierString)
+    end, myIdentifierString)
 end
 
 ---

@@ -405,7 +405,7 @@ function LANG.IsLanguage(langName)
     return LANG.Strings[string.lower(langName)] ~= nil
 end
 
-local function LanguageChanged(cv, old, new)
+cvars.AddChangeCallback(cv_ttt_language:GetName(), function(cv, old, new)
     if new and new ~= LANG.ActiveLanguage then
         if LANG.IsServerDefault(new) then
             new = LANG.ServerLanguage
@@ -413,13 +413,11 @@ local function LanguageChanged(cv, old, new)
 
         LANG.SetActiveLanguage(new)
     end
-end
-cvars.AddChangeCallback("ttt_language", LanguageChanged)
+end)
 
-local function ForceReload()
+concommand.Add("ttt_reloadlang", function()
     LANG.SetActiveLanguage(LANG.DefaultLanguage)
-end
-concommand.Add("ttt_reloadlang", ForceReload)
+end)
 
 ---
 -- Get a copy of all available languages (keys in the Strings tbl)
