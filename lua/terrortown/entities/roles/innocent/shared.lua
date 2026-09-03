@@ -25,7 +25,9 @@ if SERVER then
         "ttt_min_inno_pct",
         0.47,
         CV_FLAGS_SERVER,
-        "Minimum multiplicator for each player to calculate the minimum amount of innocents"
+        "Minimum multiplicator for each player to calculate the minimum amount of innocents",
+        0,
+        1
     )
 
     ---

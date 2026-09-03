@@ -89,18 +89,33 @@ local function SetupData(roleData)
     if SERVER and not roleData.notSelectable then
         ---
         -- @realm server
-        CreateConVar("ttt_" .. roleData.name .. "_pct", conVarData.pct or 1, CV_FLAGS_SERVER)
+        CreateConVar(
+            "ttt_" .. roleData.name .. "_pct",
+            conVarData.pct or 1,
+            CV_FLAGS_SERVER,
+            nil,
+            0,
+            1
+        )
 
         ---
         -- @realm server
-        CreateConVar("ttt_" .. roleData.name .. "_max", conVarData.maximum or 1, CV_FLAGS_SERVER)
+        CreateConVar(
+            "ttt_" .. roleData.name .. "_max",
+            conVarData.maximum or 1,
+            CV_FLAGS_SERVER,
+            nil,
+            0
+        )
 
         ---
         -- @realm server
         CreateConVar(
             "ttt_" .. roleData.name .. "_min_players",
             conVarData.minPlayers or 1,
-            CV_FLAGS_SERVER
+            CV_FLAGS_SERVER,
+            nil,
+            0
         )
 
         -- if we don't compare detective here, roles will never get assigned
@@ -110,7 +125,9 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_" .. roleData.name .. "_karma_min",
                 conVarData.minKarma or 0,
-                CV_FLAGS_SERVER
+                CV_FLAGS_SERVER,
+                nil,
+                0
             )
 
             ---
@@ -118,12 +135,15 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_" .. roleData.name .. "_random",
                 conVarData.random or 100,
-                CV_FLAGS_SERVER
+                CV_FLAGS_SERVER,
+                nil,
+                0,
+                100
             )
 
             ---
             -- @realm server
-            CreateConVar("ttt_" .. roleData.name .. "_enabled", 1, CV_FLAGS_SERVER)
+            CreateConVar("ttt_" .. roleData.name .. "_enabled", 1, CV_FLAGS_SERVER, nil, 0, 1)
         end
     end
 
@@ -132,7 +152,10 @@ local function SetupData(roleData)
     CreateConVar(
         "ttt_" .. roleData.name .. "_traitor_button",
         conVarData.traitorButton or 0,
-        CV_FLAGS_SHARED
+        CV_FLAGS_SHARED,
+        nil,
+        0,
+        1
     )
 
     ---
@@ -140,7 +163,10 @@ local function SetupData(roleData)
     CreateConVar(
         "ttt2_ragdoll_pinning_" .. roleData.name,
         conVarData.ragdollPinning or 0,
-        CV_FLAGS_SHARED
+        CV_FLAGS_SHARED,
+        nil,
+        0,
+        1
     )
 
     if SERVER then
@@ -149,7 +175,9 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_starting",
             conVarData.credits or 0,
-            CV_FLAGS_SERVER
+            CV_FLAGS_SERVER,
+            nil,
+            0
         )
 
         ---
@@ -157,7 +185,10 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_dead_enb",
             conVarData.creditsAwardDeadEnable or 0,
-            CV_FLAGS_SERVER
+            CV_FLAGS_SERVER,
+            nil,
+            0,
+            1
         )
 
         ---
@@ -165,7 +196,10 @@ local function SetupData(roleData)
         CreateConVar(
             "ttt_" .. roleData.abbr .. "_credits_award_kill_enb",
             conVarData.creditsAwardKillEnable or 0,
-            CV_FLAGS_SERVER
+            CV_FLAGS_SERVER,
+            nil,
+            0,
+            1
         )
 
         local shopFallbackValue
@@ -193,7 +227,9 @@ local function SetupData(roleData)
             CreateConVar(
                 "ttt_credits_" .. roleData.name .. "kill",
                 conVarData.traitorKill,
-                CV_FLAGS_SERVER
+                CV_FLAGS_SERVER,
+                nil,
+                0
             )
         end
     else -- CLIENT

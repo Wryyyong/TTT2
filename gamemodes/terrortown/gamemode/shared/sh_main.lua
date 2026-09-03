@@ -355,24 +355,35 @@ local ttt_playercolors = {
 local ttt_playercolors_all_count = #ttt_playercolors.all
 local ttt_playercolors_serious_count = #ttt_playercolors.serious
 
+local PLAYERCOLORS_MODE_NONE = 0
+local PLAYERCOLORS_MODE_SERIOUS = 1
+local PLAYERCOLORS_MODE_ALL = 2
+local PLAYERCOLORS_MODE_RANDOM = 3
+
 ---
 -- @realm shared
-local colormode = CreateConVar("ttt_playercolor_mode", 1, CV_FLAGS_SHARED)
+local cvPlayerColorMode = CreateConVar(
+    "ttt_playercolor_mode",
+    PLAYERCOLORS_MODE_SERIOUS,
+    CV_FLAGS_SHARED,
+    nil,
+    PLAYERCOLORS_MODE_NONE,
+    PLAYERCOLORS_MODE_RANDOM
+)
 
 ---
 -- @param string model The selected (default) playermodel
 -- @hook
 -- @realm shared
 function GM:TTTPlayerColor(model)
-    local mode = colormode:GetInt()
+    local mode = cvPlayerColorMode:GetInt()
 
-    if mode == 1 then
+    if mode == PLAYERCOLORS_MODE_SERIOUS then
         return ttt_playercolors.serious[math.random(ttt_playercolors_serious_count)]
-    elseif mode == 2 then
+    elseif mode == PLAYERCOLORS_MODE_ALL then
         return ttt_playercolors.all[math.random(ttt_playercolors_all_count)]
-    elseif mode == 3 then
-        -- Full randomness
-        return Color(math.random(0, 255), math.random(0, 255), math.random(0, 255))
+    elseif mode == PLAYERCOLORS_MODE_RANDOM then
+        return ColorRand()
     end
 
     -- No coloring

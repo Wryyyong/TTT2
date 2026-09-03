@@ -10,16 +10,11 @@ local IsValid = IsValid
 local hook = hook
 local playerGetAll = player.GetAll
 
-local cv_radarCharge
+-- @realm server
+local cv_radarCharge = CreateConVar("ttt2_radar_charge_time", 30, CV_FLAGS_SERVER, nil, 0)
 
 util.AddNetworkString("TTT2RadarUpdateAutoScan")
 util.AddNetworkString("TTT2RadarUpdateTime")
-
----
--- @ignore
-function ITEM:Initialize()
-    cv_radarCharge = GetConVar("ttt2_radar_charge_time")
-end
 
 local function UpdateTimeOnPlayer(ply)
     if ply.lastRadarTime == ply.radarTime then

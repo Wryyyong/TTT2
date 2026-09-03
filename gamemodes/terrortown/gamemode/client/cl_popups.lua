@@ -77,7 +77,7 @@ end
 
 ---
 -- @realm client
-local startshowtime = CreateConVar("ttt_startpopup_duration", 17, CV_FLAGS_CLIENT)
+local startshowtime = CreateConVar("ttt_startpopup_duration", 17, CV_FLAGS_CLIENT, nil, 0)
 
 local function drawFunc(s, w, h)
     draw.RoundedBox(8, 0, 0, w, h, s.paintColor)
@@ -86,8 +86,10 @@ end
 ---
 -- shows info about goal and fellow traitors (if any)
 local function RoundStartPopup()
+    local showtime = startshowtime:GetFloat()
+
     -- based on Derma_Message
-    if startshowtime:GetInt() <= 0 then
+    if showtime == 0 then
         return
     end
 
@@ -133,7 +135,7 @@ local function RoundStartPopup()
 
     dframe:AlignBottom(10)
 
-    timer.Simple(startshowtime:GetInt(), function()
+    timer.Simple(showtime, function()
         if not IsValid(dframe) then
             return
         end

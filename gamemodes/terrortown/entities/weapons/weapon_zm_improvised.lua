@@ -9,15 +9,15 @@ if SERVER then
 
     ---
     -- @realm server
-    cvCrowbarDelay = CreateConVar("ttt2_crowbar_shove_delay", 1, CV_FLAGS_SERVER)
+    cvCrowbarDelay = CreateConVar("ttt2_crowbar_shove_delay", 1, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    cvCrowbarUnlocks = CreateConVar("ttt_crowbar_unlocks", 1, CV_FLAGS_SERVER)
+    cvCrowbarUnlocks = CreateConVar("ttt_crowbar_unlocks", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
-    cvCrowbarPushForce = CreateConVar("ttt_crowbar_pushforce", 395, CV_FLAGS_SERVER)
+    cvCrowbarPushForce = CreateConVar("ttt_crowbar_pushforce", 395, CV_FLAGS_SERVER, nil, 0)
 end
 
 DEFINE_BASECLASS("weapon_tttbase")
@@ -265,10 +265,12 @@ function SWEP:SecondaryAttack()
         ---
         -- @realm shared
         if SERVER and not ply:IsFrozen() and not hook.Run("TTT2PlayerPreventPush", owner, ply) then
-            local pushvel = tr.Normal * cvCrowbarPushForce:GetFloat()
+            local pushvel = tr.Normal
+            pushvel:Mul(cvCrowbarPushForce:GetFloat())
             pushvel.z = math.Clamp(pushvel.z, 50, 100) -- limit the upward force to prevent launching
+            pushvel:Add(ply:GetVelocity())
 
-            ply:SetVelocity(ply:GetVelocity() + pushvel)
+            ply:SetVelocity(pushvel)
 
             ply.was_pushed = {
                 att = owner,

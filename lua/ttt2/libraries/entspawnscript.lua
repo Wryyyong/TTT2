@@ -153,7 +153,8 @@ if SERVER then
 
     ---
     -- @realm server
-    local cvUseWeaponSpawnScript = CreateConVar("ttt_use_weapon_spawn_scripts", 1)
+    local cvUseWeaponSpawnScript =
+        CreateConVar("ttt_use_weapon_spawn_scripts", 1, CV_FLAGS_SERVER, nil, 0, 1)
     ---
     -- Called when the entities on the map are available and the spawn entities can be read..
     -- @realm server

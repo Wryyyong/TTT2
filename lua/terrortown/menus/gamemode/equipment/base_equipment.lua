@@ -131,7 +131,7 @@ function CLGAMEMODESUBMENU:Populate(parent)
     form:MakeSlider({
         label = "equipmenteditor_name_min_players",
         min = 0,
-        max = 63,
+        max = 64,
         decimal = 0,
         database = DatabaseElement(accessName, itemName, "minPlayers"),
         master = master,

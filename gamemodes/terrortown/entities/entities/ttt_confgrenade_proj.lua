@@ -9,7 +9,7 @@ if SERVER then
 
     ---
     -- @realm server
-    ttt_allow_jump = CreateConVar("ttt_allow_discomb_jump", 0, CV_FLAGS_SERVER)
+    ttt_allow_jump = CreateConVar("ttt_allow_discomb_jump", 0, CV_FLAGS_SERVER, nil, 0, 1)
 end
 
 ENT.Type = "anim"

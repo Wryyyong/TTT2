@@ -20,23 +20,25 @@ end
 
 ---
 -- @realm server
-local ttt_bots_are_spectators = CreateConVar("ttt_bots_are_spectators", 0, CV_FLAGS_SERVER)
+local ttt_bots_are_spectators =
+    CreateConVar("ttt_bots_are_spectators", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
 ---
 -- @realm server
-local ttt2_bots_lock_on_death = CreateConVar("ttt2_bots_lock_on_death", 0, CV_FLAGS_SERVER)
+local ttt2_bots_lock_on_death =
+    CreateConVar("ttt2_bots_lock_on_death", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
 ---
 -- @realm server
-local ttt_dyingshot = CreateConVar("ttt_dyingshot", 0, CV_FLAGS_SERVER)
+local ttt_dyingshot = CreateConVar("ttt_dyingshot", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
 ---
 -- @realm server
-CreateConVar("ttt_killer_dna_range", 550, CV_FLAGS_SERVER)
+CreateConVar("ttt_killer_dna_range", 550, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- @realm server
-CreateConVar("ttt_killer_dna_basetime", 100, CV_FLAGS_SERVER)
+CreateConVar("ttt_killer_dna_basetime", 100, CV_FLAGS_SERVER, nil, 0)
 
 util.AddNetworkString("ttt2_damage_received")
 util.AddNetworkString("ttt2_set_player_setting")
@@ -1161,15 +1163,15 @@ local fallsounds_count = #fallsounds
 
 ---
 -- @realm server
-local falldmg_enable = CreateConVar("ttt2_falldmg_enable", 1, CV_FLAGS_SERVER)
+local falldmg_enable = CreateConVar("ttt2_falldmg_enable", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
 ---
 -- @realm server
-local falldmg_min_vel = CreateConVar("ttt2_falldmg_min_velocity", 450, CV_FLAGS_SERVER)
+local falldmg_min_vel = CreateConVar("ttt2_falldmg_min_velocity", 450, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- @realm server
-local falldmg_expo = CreateConVar("ttt2_falldmg_exponent", 1.75, CV_FLAGS_SERVER)
+local falldmg_expo = CreateConVar("ttt2_falldmg_exponent", 1.75, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- Called when a @{Player} makes contact with the ground.
@@ -1263,7 +1265,7 @@ end
 
 ---
 -- @realm server
-local ttt_postdm = CreateConVar("ttt_postround_dm", 0, CV_FLAGS_SERVER)
+local ttt_postdm = CreateConVar("ttt_postround_dm", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
 ---
 -- Called when an entity takes damage. You can modify all parts of the damage info in this hook.

@@ -26,7 +26,13 @@ end
 
 ---
 -- @realm shared
-CreateConVar("ttt2_c4_radius", 600, CV_FLAGS_SHARED, "Defines the damage radius of C4 explosions")
+CreateConVar(
+    "ttt2_c4_radius",
+    600,
+    CV_FLAGS_SHARED,
+    "Defines the damage radius of C4 explosions",
+    0
+)
 
 ---
 -- @realm shared
@@ -34,7 +40,8 @@ CreateConVar(
     "ttt2_c4_radius_inner",
     500,
     CV_FLAGS_SHARED,
-    "Defines the kill radius of C4 explosions"
+    "Defines the kill radius of C4 explosions",
+    0
 )
 
 SWEP.Base = "weapon_tttbase"

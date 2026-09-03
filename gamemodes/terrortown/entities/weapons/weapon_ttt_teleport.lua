@@ -9,7 +9,7 @@ if SERVER then
 
     ---
     -- @realm server
-    ttt_telefrags = CreateConVar("ttt_teleport_telefrags", 1, CV_FLAGS_SERVER)
+    ttt_telefrags = CreateConVar("ttt_teleport_telefrags", 1, CV_FLAGS_SERVER, nil, 0, 1)
 end
 
 DEFINE_BASECLASS("weapon_tttbase")

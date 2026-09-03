@@ -19,7 +19,8 @@ local numColsVar = CreateConVar(
     "ttt_bem_cols",
     5,
     CV_FLAGS_CLIENT,
-    "Sets the number of columns in the Traitor/Detective menu's item list."
+    "Sets the number of columns in the Traitor/Detective menu's item list.",
+    0
 )
 
 ---
@@ -28,7 +29,8 @@ local numRowsVar = CreateConVar(
     "ttt_bem_rows",
     6,
     CV_FLAGS_CLIENT,
-    "Sets the number of rows in the Traitor/Detective menu's item list."
+    "Sets the number of rows in the Traitor/Detective menu's item list.",
+    0
 )
 
 ---
@@ -37,23 +39,36 @@ local itemSizeVar = CreateConVar(
     "ttt_bem_size",
     64,
     CV_FLAGS_CLIENT,
-    "Sets the item size in the Traitor/Detective menu's item list."
+    "Sets the item size in the Traitor/Detective menu's item list.",
+    0
 )
 
 ---
 -- @realm client
-local showCustomVar =
-    CreateConVar("ttt_bem_marker_custom", 1, CV_FLAGS_CLIENT, "Should custom items get a marker?")
+local showCustomVar = CreateConVar(
+    "ttt_bem_marker_custom",
+    1,
+    CV_FLAGS_CLIENT,
+    "Should custom items get a marker?",
+    0,
+    1
+)
 
 ---
 -- @realm client
-local showFavoriteVar =
-    CreateConVar("ttt_bem_marker_fav", 1, CV_FLAGS_CLIENT, "Should favorite items get a marker?")
+local showFavoriteVar = CreateConVar(
+    "ttt_bem_marker_fav",
+    1,
+    CV_FLAGS_CLIENT,
+    "Should favorite items get a marker?",
+    0,
+    1
+)
 
 ---
 -- @realm client
 local showSlotVar =
-    CreateConVar("ttt_bem_marker_slot", 1, CV_FLAGS_CLIENT, "Should items get a slot-marker?")
+    CreateConVar("ttt_bem_marker_slot", 1, CV_FLAGS_CLIENT, "Should items get a slot-marker?", 0, 1)
 
 ---
 -- @realm client
@@ -61,7 +76,9 @@ local alwaysShowShopVar = CreateConVar(
     "ttt_bem_always_show_shop",
     1,
     CV_FLAGS_CLIENT,
-    "Should the shop be opened/closed instead of the score menu during preparing / at the end of a round?"
+    "Should the shop be opened/closed instead of the score menu during preparing / at the end of a round?",
+    0,
+    1
 )
 
 ---
@@ -70,7 +87,9 @@ local enableDoubleClickBuy = CreateConVar(
     "ttt_bem_enable_doubleclick_buy",
     1,
     CV_FLAGS_CLIENT,
-    "Sets if you will be able to double click on an Item to buy it."
+    "Sets if you will be able to double click on an Item to buy it.",
+    0,
+    1
 )
 
 -- get serverside ConVars

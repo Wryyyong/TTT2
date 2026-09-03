@@ -15,62 +15,65 @@ end
 
 ---
 -- @realm shared
-local cvLevelTimeLimit = CreateConVar("ttt_time_limit_minutes", 75, CV_FLAGS_SHARED)
+local cvLevelTimeLimit = CreateConVar("ttt_time_limit_minutes", 75, CV_FLAGS_SHARED, nil, 0)
 
 ---
 -- @realm shared
-local cvDetectiveMode = CreateConVar("ttt_sherlock_mode", 1, CV_FLAGS_SHARED)
+local cvDetectiveMode = CreateConVar("ttt_sherlock_mode", 1, CV_FLAGS_SHARED, nil, 0, 1)
 
 ---
 -- @realm shared
-local cvHasteMode = CreateConVar("ttt_haste", 1, CV_FLAGS_SHARED)
+local cvHasteMode = CreateConVar("ttt_haste", 1, CV_FLAGS_SHARED, nil, 0, 1)
 
 ---
 -- @realm shared
-local cvSessionLimits = CreateConVar("ttt_session_limits_mode", 1, CV_FLAGS_SHARED)
+local cvSessionLimits = CreateConVar("ttt_session_limits_mode", 1, CV_FLAGS_SHARED, nil, 0, 3)
 
 gameloop = {}
 
 if SERVER then
     ---
     -- @realm server
-    local cvRoundLimit = CreateConVar("ttt_round_limit", 6, CV_FLAGS_SERVER)
+    local cvDurationPrepPhase = CreateConVar("ttt_preptime_seconds", 30, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvDurationPrepPhase = CreateConVar("ttt_preptime_seconds", 30, CV_FLAGS_SERVER)
+    local cvDurationFirstPrepPhase = CreateConVar("ttt_firstpreptime", 60, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvDurationFirstPrepPhase = CreateConVar("ttt_firstpreptime", 60, CV_FLAGS_SERVER)
+    local cvDurationRound = CreateConVar("ttt_roundtime_minutes", 10, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvDurationRound = CreateConVar("ttt_roundtime_minutes", 10, CV_FLAGS_SERVER)
+    local cvDurationEndPhase = CreateConVar("ttt_posttime_seconds", 30, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvDurationEndPhase = CreateConVar("ttt_posttime_seconds", 30, CV_FLAGS_SERVER)
+    local cvRoundLimit = CreateConVar("ttt_round_limit", 6, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvTimeHasteStarting = CreateConVar("ttt_haste_starting_minutes", 5, CV_FLAGS_SERVER)
+    local cvTimeHasteStarting =
+        CreateConVar("ttt_haste_starting_minutes", 5, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvMinPlayers = CreateConVar("ttt_minimum_players", 2, CV_FLAGS_SERVER)
+    local cvMinPlayers =
+        CreateConVar("ttt_minimum_players", 2, CV_FLAGS_SERVER, nil, 0, game.MaxPlayers())
 
     ---
     -- @realm server
-    local cvPreventWin = CreateConVar("ttt_debug_preventwin", 0, CV_FLAGS_SERVER)
+    local cvPreventWin = CreateConVar("ttt_debug_preventwin", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
-    local cvNameChangeKick = CreateConVar("ttt_namechange_kick", 1, CV_FLAGS_SERVER)
+    local cvNameChangeKick = CreateConVar("ttt_namechange_kick", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
-    local cvNameChangeKickBanTime = CreateConVar("ttt_namechange_bantime", 10, CV_FLAGS_SERVER)
+    local cvNameChangeKickBanTime =
+        CreateConVar("ttt_namechange_bantime", 10, CV_FLAGS_SERVER, nil, 0)
 
     -- defines if this is the first round played on this level, some special
     -- care should be taken if it is the first round
@@ -676,7 +679,9 @@ if CLIENT then
         "ttt_cl_soundcues",
         0,
         CV_FLAGS_CLIENT,
-        "Optional sound cues on round start and end"
+        "Optional sound cues on round start and end",
+        0,
+        1
     )
 
     local cues = {

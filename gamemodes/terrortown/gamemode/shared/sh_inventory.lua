@@ -8,7 +8,8 @@ if SERVER then
         "ttt2_max_melee_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of melee weapons, a player can carry (-1 = infinite)"
+        "Maximum amount of melee weapons, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -17,7 +18,8 @@ if SERVER then
         "ttt2_max_secondary_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of secondary weapons, a player can carry (-1 = infinite)"
+        "Maximum amount of secondary weapons, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -26,7 +28,8 @@ if SERVER then
         "ttt2_max_primary_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of primary weapons, a player can carry (-1 = infinite)"
+        "Maximum amount of primary weapons, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -35,7 +38,8 @@ if SERVER then
         "ttt2_max_nade_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of grenades, a player can carry (-1 = infinite)"
+        "Maximum amount of grenades, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -44,7 +48,8 @@ if SERVER then
         "ttt2_max_carry_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of carry tools, a player can carry (-1 = infinite)"
+        "Maximum amount of carry tools, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -53,7 +58,8 @@ if SERVER then
         "ttt2_max_unarmed_slots",
         1,
         CV_FLAGS_SERVER,
-        "Maximum amount of unarmed slots, a player can have (-1 = infinite)"
+        "Maximum amount of unarmed slots, a player can have (-1 = infinite)",
+        -1
     )
 
     ---
@@ -62,7 +68,8 @@ if SERVER then
         "ttt2_max_special_slots",
         2,
         CV_FLAGS_SERVER,
-        "Maximum amount of special weapons, a player can carry (-1 = infinite)"
+        "Maximum amount of special weapons, a player can carry (-1 = infinite)",
+        -1
     )
 
     ---
@@ -71,7 +78,8 @@ if SERVER then
         "ttt2_max_extra_slots",
         -1,
         CV_FLAGS_SERVER,
-        "Maximum amount of extra weapons, a player can carry (-1 = infinite)"
+        "Maximum amount of extra weapons, a player can carry (-1 = infinite)",
+        -1
     )
 
     hook.Add("TTT2SyncGlobals", "AddInventoryGlobals", function()

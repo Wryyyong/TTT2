@@ -153,11 +153,11 @@ end
 if SERVER then
     ---
     -- @realm server
-    local cvDoorHealth = CreateConVar("ttt2_doors_health", 100, CV_FLAGS_SERVER)
+    local cvDoorHealth = CreateConVar("ttt2_doors_health", 100, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- @realm server
-    local cvDoorPropHealth = CreateConVar("ttt2_doors_prop_health", 50, CV_FLAGS_SERVER)
+    local cvDoorPropHealth = CreateConVar("ttt2_doors_prop_health", 50, CV_FLAGS_SERVER, nil, 0)
 
     ---
     -- Locks a door.

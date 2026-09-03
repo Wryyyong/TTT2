@@ -5,11 +5,11 @@ local IsValid = IsValid
 
 ---
 -- @realm client
-CreateConVar("ttt_spectator_mode", 0, CV_FLAGS_CLIENT)
+CreateConVar("ttt_spectator_mode", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
 ---
 -- @realm client
-CreateConVar("ttt_mute_team_check", 0)
+CreateConVar("ttt_mute_team_check", 0, FCVAR_NONE, nil, 0, 1)
 
 local function SpectateCallback(cv, old, new)
     local num = tonumber(new)

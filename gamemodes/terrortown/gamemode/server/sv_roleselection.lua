@@ -26,7 +26,8 @@ roleselection.cv = {
         "ttt_max_roles",
         0,
         CV_FLAGS_SERVER,
-        "Maximum amount of different roles"
+        "Maximum amount of different roles",
+        0
     ),
 
     ---
@@ -35,7 +36,9 @@ roleselection.cv = {
         "ttt_max_roles_pct",
         0,
         CV_FLAGS_SERVER,
-        "Maximum amount of different roles based on player amount. ttt_max_roles needs to be 0"
+        "Maximum amount of different roles based on player amount. ttt_max_roles needs to be 0",
+        0,
+        1
     ),
 
     ---
@@ -44,7 +47,8 @@ roleselection.cv = {
         "ttt_max_baseroles",
         0,
         CV_FLAGS_SERVER,
-        "Maximum amount of different baseroles"
+        "Maximum amount of different baseroles",
+        0
     ),
 
     ---
@@ -53,14 +57,16 @@ roleselection.cv = {
         "ttt_max_baseroles_pct",
         0,
         CV_FLAGS_SERVER,
-        "Maximum amount of different baseroles based on player amount. ttt_max_baseroles needs to be 0"
+        "Maximum amount of different baseroles based on player amount. ttt_max_baseroles needs to be 0",
+        0,
+        1
     ),
 
     ---
     -- @realm server
     ttt_role_derandomize_mode = CreateConVar(
         "ttt_role_derandomize_mode",
-        tostring(ROLE_DERAND_BOTH),
+        ROLE_DERAND_BOTH,
         CV_FLAGS_SERVER,
         "The mode to use for role selection derandomization",
         ROLE_DERAND_NONE,

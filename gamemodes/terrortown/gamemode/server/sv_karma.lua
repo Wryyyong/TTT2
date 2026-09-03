@@ -12,83 +12,83 @@ KARMA = {
 KARMA.cv = {
     ---
     -- @realm server
-    enabled = CreateConVar("ttt_karma", 1, CV_FLAGS_SERVER),
+    enabled = CreateConVar("ttt_karma", 1, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    strict = CreateConVar("ttt_karma_strict", 1, CV_FLAGS_SERVER),
+    strict = CreateConVar("ttt_karma_strict", 1, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    starting = CreateConVar("ttt_karma_starting", 1000, CV_FLAGS_SERVER),
+    starting = CreateConVar("ttt_karma_starting", 1000, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    max = CreateConVar("ttt_karma_max", 1000, CV_FLAGS_SERVER),
+    max = CreateConVar("ttt_karma_max", 1000, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    ratio = CreateConVar("ttt_karma_ratio", 0.001, CV_FLAGS_SERVER),
+    ratio = CreateConVar("ttt_karma_ratio", 0.001, CV_FLAGS_SERVER, nil, 0, 0.01),
 
     ---
     -- @realm server
-    killpenalty = CreateConVar("ttt_karma_kill_penalty", 15, CV_FLAGS_SERVER),
+    killpenalty = CreateConVar("ttt_karma_kill_penalty", 15, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    roundheal = CreateConVar("ttt_karma_round_increment", 5, CV_FLAGS_SERVER),
+    roundheal = CreateConVar("ttt_karma_round_increment", 5, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    clean = CreateConVar("ttt_karma_clean_bonus", 30, CV_FLAGS_SERVER),
+    clean = CreateConVar("ttt_karma_clean_bonus", 30, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    tbonus = CreateConVar("ttt_karma_traitorkill_bonus", 40, CV_FLAGS_SERVER),
+    tbonus = CreateConVar("ttt_karma_traitorkill_bonus", 40, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    tratio = CreateConVar("ttt_karma_traitordmg_ratio", 0.0003, CV_FLAGS_SERVER),
+    tratio = CreateConVar("ttt_karma_traitordmg_ratio", 0.0003, CV_FLAGS_SERVER, nil, 0, 0.01),
 
     ---
     -- @realm server
-    debug = CreateConVar("ttt_karma_debugspam", 0, CV_FLAGS_SERVER),
+    debug = CreateConVar("ttt_karma_debugspam", 0, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    persist = CreateConVar("ttt_karma_persist", 0, CV_FLAGS_SERVER),
+    persist = CreateConVar("ttt_karma_persist", 0, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    falloff = CreateConVar("ttt_karma_clean_half", 0.25, CV_FLAGS_SERVER),
+    falloff = CreateConVar("ttt_karma_clean_half", 0.25, CV_FLAGS_SERVER, nil, 0, 0.999999),
 
     ---
     -- @realm server
-    autokick = CreateConVar("ttt_karma_low_autokick", 1, CV_FLAGS_SERVER),
+    autokick = CreateConVar("ttt_karma_low_autokick", 1, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    kicklevel = CreateConVar("ttt_karma_low_amount", 450, CV_FLAGS_SERVER),
+    kicklevel = CreateConVar("ttt_karma_low_amount", 450, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    autoban = CreateConVar("ttt_karma_low_ban", 1, CV_FLAGS_SERVER),
+    autoban = CreateConVar("ttt_karma_low_ban", 1, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    bantime = CreateConVar("ttt_karma_low_ban_minutes", 60, CV_FLAGS_SERVER),
+    bantime = CreateConVar("ttt_karma_low_ban_minutes", 60, CV_FLAGS_SERVER, nil, 0),
 
     ---
     -- @realm server
-    damagescaling = CreateConVar("ttt2_karma_damage_scaling", 1, CV_FLAGS_SERVER),
+    damagescaling = CreateConVar("ttt2_karma_damage_scaling", 1, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    healthscaling = CreateConVar("ttt2_karma_health_scaling", 0, CV_FLAGS_SERVER),
+    healthscaling = CreateConVar("ttt2_karma_health_scaling", 0, CV_FLAGS_SERVER, nil, 0, 1),
 
     ---
     -- @realm server
-    healthmin = CreateConVar("ttt2_karma_health_min", 50, CV_FLAGS_SERVER),
+    healthmin = CreateConVar("ttt2_karma_health_min", 50, CV_FLAGS_SERVER, nil, 0),
 }
 
 local config = KARMA.cv
@@ -585,19 +585,19 @@ function KARMA.DecayedMultiplier(ply)
     local max = config.max:GetFloat()
     local start = config.starting:GetFloat()
     local k = ply:GetLiveKarma()
+    local falloff = config.falloff:GetFloat()
 
-    if config.falloff:GetFloat() <= 0 or k < start then
+    if falloff == 0 or k < start then
         return 1
     elseif k < max then
         -- if falloff is enabled, then if our karma is above the starting value,
         -- our round bonus is going to start decreasing as our karma increases
         local basediff = max - start
         local plydiff = k - start
-        local half = math.Clamp(config.falloff:GetFloat(), 0.01, 0.99)
 
         -- exponentially decay the bonus such that when the player's excess karma
         -- is at (basediff * half) the bonus is half of the original value
-        return expdecay(basediff * half, plydiff)
+        return expdecay(basediff * falloff, plydiff)
     end
 
     return 1

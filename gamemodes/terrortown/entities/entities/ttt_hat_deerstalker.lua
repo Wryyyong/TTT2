@@ -42,11 +42,13 @@ end
 if SERVER then
     ---
     -- @realm server
-    local ttt_hats_reclaim = CreateConVar("ttt_detective_hats_reclaim", 1)
+    local ttt_hats_reclaim =
+        CreateConVar("ttt_detective_hats_reclaim", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
-    local ttt_hats_innocent = CreateConVar("ttt_detective_hats_reclaim_any", 0)
+    local ttt_hats_innocent =
+        CreateConVar("ttt_detective_hats_reclaim_any", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server

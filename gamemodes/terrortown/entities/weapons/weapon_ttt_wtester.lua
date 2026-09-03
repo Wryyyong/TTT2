@@ -36,8 +36,14 @@ else
 
     ---
     -- @realm server
-    local dna_mode =
-        CreateConVar("ttt2_dna_radar", 0, CV_FLAGS_SERVER, "Toggles the DNA Scanner functionality")
+    local dna_mode = CreateConVar(
+        "ttt2_dna_radar",
+        0,
+        CV_FLAGS_SERVER,
+        "Toggles the DNA Scanner functionality",
+        0,
+        1
+    )
 
     ---
     -- @realm server
@@ -45,7 +51,8 @@ else
         "ttt2_dna_scanner_slots",
         4,
         CV_FLAGS_SERVER,
-        "Defines the maximum amount of DNA slots"
+        "Defines the maximum amount of DNA slots",
+        0
     )
 
     ---
@@ -54,7 +61,8 @@ else
         "ttt2_dna_radar_cooldown",
         5,
         CV_FLAGS_SERVER,
-        "Defines the cooldown in seconds"
+        "Defines the cooldown in seconds",
+        0
     )
 
     hook.Add("TTT2SyncGlobals", "TTT2SyncDNAScannerGlobals", function()

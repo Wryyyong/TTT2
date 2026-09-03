@@ -14,24 +14,27 @@ end
 
 ---
 -- @realm client
-local cvEnableSoundInteract = CreateConVar("ttt2_enable_sound_interact", 1, CV_FLAGS_CLIENT)
+local cvEnableSoundInteract =
+    CreateConVar("ttt2_enable_sound_interact", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 ---
 -- @realm client
-local cvLevelSoundInteract = CreateConVar("ttt2_level_sound_interact", 1, CV_FLAGS_CLIENT)
+local cvLevelSoundInteract = CreateConVar("ttt2_level_sound_interact", 1, CV_FLAGS_CLIENT, nil, 0)
 
 ---
 -- @realm client
-local cvEnableSoundButtons = CreateConVar("ttt2_enable_sound_buttons", 1, CV_FLAGS_CLIENT)
+local cvEnableSoundButtons =
+    CreateConVar("ttt2_enable_sound_buttons", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 ---
 -- @realm client
-local cvLevelSoundButtons = CreateConVar("ttt2_level_sound_buttons", 1, CV_FLAGS_CLIENT)
+local cvLevelSoundButtons = CreateConVar("ttt2_level_sound_buttons", 1, CV_FLAGS_CLIENT, nil, 0)
 
 ---
 -- @realm client
-local cvEnableSoundMessage = CreateConVar("ttt2_enable_sound_message", 0, CV_FLAGS_CLIENT)
+local cvEnableSoundMessage =
+    CreateConVar("ttt2_enable_sound_message", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 ---
 -- @realm client
-local cvLevelSoundMessage = CreateConVar("ttt2_level_sound_message", 1, CV_FLAGS_CLIENT)
+local cvLevelSoundMessage = CreateConVar("ttt2_level_sound_message", 1, CV_FLAGS_CLIENT, nil, 0)
 
 ---
 -- Plays the sound only if the provided type is enabled on the client.

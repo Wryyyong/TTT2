@@ -15,7 +15,7 @@ HUDELEMENT.Base = base
 if CLIENT then
     ---
     -- @realm client
-    local hudWidth = CreateConVar("ttt2_base_hud_width", 0, CV_FLAGS_CLIENT)
+    local hudWidth = CreateConVar("ttt2_base_hud_width", 0, CV_FLAGS_CLIENT, nil, 0)
 
     -- Color presets
     HUDELEMENT.bg_colors = {

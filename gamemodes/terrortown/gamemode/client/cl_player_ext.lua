@@ -99,7 +99,7 @@ end
 
 ---
 -- @realm client
-local cv_ttt_show_gestures = CreateConVar("ttt_show_gestures", 1, CV_FLAGS_CLIENT)
+local cv_ttt_show_gestures = CreateConVar("ttt_show_gestures", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
 ---
 -- Perform the gesture using the GestureRunner system. If custom_runner is
@@ -109,7 +109,7 @@ local cv_ttt_show_gestures = CreateConVar("ttt_show_gestures", 1, CV_FLAGS_CLIEN
 -- @return boolean success?
 -- @realm client
 function plymeta:AnimPerformGesture(act, custom_runner)
-    if not cv_ttt_show_gestures or cv_ttt_show_gestures:GetInt() == 0 then
+    if not cv_ttt_show_gestures:GetBool() then
         return
     end
 

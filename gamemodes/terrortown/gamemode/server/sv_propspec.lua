@@ -13,19 +13,28 @@ local cvPropspecToggle = GetConVar("ttt_spec_prop_control")
 
 ---
 -- @realm server
-local cvPropspecBase = CreateConVar("ttt_spec_prop_base", 8, CV_FLAGS_SERVER)
+local cvPropspecBase = CreateConVar("ttt_spec_prop_base", 8, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- @realm server
-local cvPropspecMin = CreateConVar("ttt_spec_prop_maxpenalty", -6, CV_FLAGS_SERVER)
+local cvPropspecForce = CreateConVar("ttt_spec_prop_force", 110, CV_FLAGS_SERVER)
 
 ---
 -- @realm server
-local cvPropspecMax = CreateConVar("ttt_spec_prop_maxbonus", 16, CV_FLAGS_SERVER)
+local cvPropspecRechargeTime =
+    CreateConVar("ttt_spec_prop_rechargetime", 1, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- @realm server
-local cvPropspecDashMulitplier = CreateConVar("ttt_spec_prop_dash", 2, CV_FLAGS_SERVER)
+local cvPropspecMin = CreateConVar("ttt_spec_prop_maxpenalty", -6, CV_FLAGS_SERVER, nil, nil, 0)
+
+---
+-- @realm server
+local cvPropspecMax = CreateConVar("ttt_spec_prop_maxbonus", 16, CV_FLAGS_SERVER, nil, 0)
+
+---
+-- @realm server
+local cvPropspecDashMulitplier = CreateConVar("ttt_spec_prop_dash", 2, CV_FLAGS_SERVER, nil, 0)
 
 ---
 -- Forces a @{Player} to spectate an @{Entity}
@@ -127,10 +136,6 @@ function PROPSPEC.End(ply)
 end
 
 ---
--- @realm server
-local propspec_force = CreateConVar("ttt_spec_prop_force", 110, CV_FLAGS_SERVER)
-
----
 -- Triggers an event based on the pressed key
 -- @param Player ply The @{Player} pressing the key. If running client-side, this will always be @{LocalPlayer}
 -- @param number key The key that the @{Player} pressed using <a href="https://wiki.facepunch.com/gmod/Enums/IN">IN_Enums</a>.
@@ -174,9 +179,8 @@ function PROPSPEC.Key(ply, key)
         return true
     end
 
-    local mass = math.min(150, phys:GetMass())
-    local force = propspec_force:GetInt()
-    local mf = mass * force
+    -- mass * force
+    local mf = math.min(150, phys:GetMass()) * cvPropspecForce:GetInt()
     local vectorAim = ply:GetAimVector()
 
     local vectorAimPlanar = Vector(vectorAim.x, vectorAim.y, 0)
@@ -196,7 +200,7 @@ function PROPSPEC.Key(ply, key)
     elseif key == IN_SPEED then
         multiplierPunches = cvPropspecDashMulitplier:GetInt()
 
-        phys:ApplyForceCenter(vectorAim:GetNormalized() * mf * cvPropspecDashMulitplier:GetInt())
+        phys:ApplyForceCenter(vectorAim:GetNormalized() * mf * multiplierPunches)
     elseif key == IN_FORWARD then
         phys:ApplyForceCenter(vectorAimPlanar * mf)
     elseif key == IN_BACK then
@@ -217,10 +221,6 @@ function PROPSPEC.Key(ply, key)
 end
 
 ---
--- @realm server
-local propspec_retime = CreateConVar("ttt_spec_prop_rechargetime", 1, CV_FLAGS_SERVER)
-
----
 -- Recharges the amount of punches a @{Player} can do (if possible)
 -- @note This automatically calculates the recharge based on time
 -- @param Player ply
@@ -236,5 +236,5 @@ function PROPSPEC.Recharge(ply)
 
     ply:SetNWFloat("specpunches", pr.punches / pr.max)
 
-    pr.retime = CurTime() + propspec_retime:GetFloat()
+    pr.retime = CurTime() + cvPropspecRechargeTime:GetFloat()
 end

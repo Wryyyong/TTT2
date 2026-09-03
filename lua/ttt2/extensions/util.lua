@@ -320,9 +320,9 @@ function util.StringToColor(str)
         hash = string.byte(str, i) + bit.lshift(hash, 8 - i) - hash
     end
 
-    local r = bit.band(bit.rshift(hash, 16), 0xFF)
-    local g = bit.band(bit.rshift(hash, 8), 0xFF)
-    local b = bit.band(hash, 0xFF)
+    local r = band(bit.rshift(hash, 16), 0xFF)
+    local g = band(bit.rshift(hash, 8), 0xFF)
+    local b = band(hash, 0xFF)
 
     return Color(r, g, b)
 end
@@ -615,13 +615,20 @@ function util.InchesToFeet(value)
 end
 
 if CLIENT then
+    local DISTANCE_UNIT_INCHES = 0
+    local DISTANCE_UNIT_METERS = 1
+    local DISTANCE_UNIT_YARDS = 2
+    local DISTANCE_UNIT_FEET = 3
+
     ---
     -- @realm client
     local cvDistanceUnit = CreateConVar(
         "ttt2_distance_unit",
-        1,
+        DISTANCE_UNIT_METERS,
         CV_FLAGS_CLIENT,
-        "Preferred unit of length (0 = inches, 1 = meters, 2 = yards, 3 = feet)"
+        "Preferred unit of length (0 = inches, 1 = meters, 2 = yards, 3 = feet)",
+        DISTANCE_UNIT_INCHES,
+        DISTANCE_UNIT_FEET
     )
 
     local paramsLength = {}
@@ -635,21 +642,21 @@ if CLIENT then
     function util.DistanceToString(value, decimals)
         local unit = cvDistanceUnit:GetInt()
 
-        if unit == 1 then
-            paramsLength.length = math.Round(util.InchesToMeters(value), decimals)
+        if unit == DISTANCE_UNIT_METERS then
+            paramsLength.length = mathRound(util.InchesToMeters(value), decimals)
 
             return LANG.GetParamTranslation("length_in_meters", paramsLength)
-        elseif unit == 2 then
-            paramsLength.length = math.Round(util.InchesToYards(value), decimals)
+        elseif unit == DISTANCE_UNIT_YARDS then
+            paramsLength.length = mathRound(util.InchesToYards(value), decimals)
 
             return LANG.GetParamTranslation("length_in_yards", paramsLength)
-        elseif unit == 3 then
-            paramsLength.length = math.Round(util.InchesToFeet(value), decimals)
+        elseif unit == DISTANCE_UNIT_FEET then
+            paramsLength.length = mathRound(util.InchesToFeet(value), decimals)
 
             return LANG.GetParamTranslation("length_in_feet", paramsLength)
         end
 
-        return tostring(math.Round(value))
+        return tostring(mathRound(value))
     end
 
     local colorsHealth = {

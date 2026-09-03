@@ -150,7 +150,7 @@ function CLGAMEMODESUBMENU:Populate(parent)
         serverConvar = "ttt_karma_clean_half",
         label = "label_karma_clean_half",
         min = 0,
-        max = 5,
+        max = 0.999999,
         decimal = 2,
         master = enbKma,
     })

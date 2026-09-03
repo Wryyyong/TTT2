@@ -271,7 +271,9 @@ local sparkle = CLIENT
             "ttt_crazy_sparks",
             0,
             CV_FLAGS_CLIENT,
-            "Toggles whether the `cball_bounce` Effect should get triggered on the hit position"
+            "Toggles whether the `cball_bounce` Effect should get triggered on the hit position",
+            0,
+            1
         )
     or nil
 
@@ -304,59 +306,69 @@ if CLIENT then
 
     ---
     -- @realm client
-    local cvOpacitySights = CreateConVar("ttt_ironsights_crosshair_opacity", 0.8, CV_FLAGS_CLIENT)
+    local cvOpacitySights =
+        CreateConVar("ttt_ironsights_crosshair_opacity", 0.8, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvSizeLineCrosshair = CreateConVar("ttt_crosshair_size", 1, CV_FLAGS_CLIENT)
+    local cvSizeLineCrosshair = CreateConVar("ttt_crosshair_size", 1, CV_FLAGS_CLIENT, nil, 0)
 
     ---
     -- @realm client
-    local cvSizeGapCrosshair = CreateConVar("ttt_crosshair_size_gap", 1, CV_FLAGS_CLIENT)
+    local cvSizeGapCrosshair = CreateConVar("ttt_crosshair_size_gap", 1, CV_FLAGS_CLIENT, nil, 0)
 
     ---
     -- @realm client
-    local cvEnableCrosshair = CreateConVar("ttt_enable_crosshair", 1, CV_FLAGS_CLIENT)
+    local cvEnableCrosshair = CreateConVar("ttt_enable_crosshair", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvOpacityCrosshair = CreateConVar("ttt_crosshair_opacity", 1, CV_FLAGS_CLIENT)
+    local cvOpacityCrosshair = CreateConVar("ttt_crosshair_opacity", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvCrosshairUseWeaponscale = CreateConVar("ttt_crosshair_weaponscale", 1, CV_FLAGS_CLIENT)
+    local cvCrosshairUseWeaponscale =
+        CreateConVar("ttt_crosshair_weaponscale", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvCrosshairStaticLength = CreateConVar("ttt_crosshair_static_length", 0, CV_FLAGS_CLIENT)
+    local cvCrosshairStaticLength =
+        CreateConVar("ttt_crosshair_static_length", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
     local cvCrosshairStaticGapLength =
-        CreateConVar("ttt_crosshair_static_gap_length", 0, CV_FLAGS_CLIENT)
+        CreateConVar("ttt_crosshair_static_gap_length", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvThicknessCrosshair = CreateConVar("ttt_crosshair_thickness", 1, CV_FLAGS_CLIENT)
+    local cvThicknessCrosshair = CreateConVar("ttt_crosshair_thickness", 1, CV_FLAGS_CLIENT, nil, 1)
 
     ---
     -- @realm client
     local cvEnableOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_enable", 0, CV_FLAGS_CLIENT)
+        CreateConVar("ttt_crosshair_outline_enable", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
     local cvThicknessOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_thickness", 1, CV_FLAGS_CLIENT)
+        CreateConVar("ttt_crosshair_outline_thickness", 1, CV_FLAGS_CLIENT, nil, 0)
 
     ---
     -- @realm client
     local cvHighContrastOutlineCrosshair =
-        CreateConVar("ttt_crosshair_outline_high_contrast", 0, CV_FLAGS_CLIENT)
+        CreateConVar("ttt_crosshair_outline_high_contrast", 0, CV_FLAGS_CLIENT, nil, 0, 1)
 
     ---
     -- @realm client
-    local cvCrosshairMode = CreateConVar("ttt_crosshair_mode", 0, CV_FLAGS_CLIENT)
+    local cvCrosshairMode = CreateConVar(
+        "ttt_crosshair_mode",
+        CROSSHAIR_MODE_DOT_AND_LINES,
+        CV_FLAGS_CLIENT,
+        nil,
+        CROSSHAIR_MODE_DOT_AND_LINES,
+        CROSSHAIR_MODE_DOT_ONLY
+    )
 
     local cvEnableHUDBoxBlur = GetConVar("ttt2_hud_enable_box_blur")
 
@@ -404,9 +416,7 @@ if CLIENT then
 
         local scale = appearance.GetGlobalScale()
         local baseConeWeapon = mathMax(0.2, 10 * self:GetPrimaryConeBase())
-        local scaleWeapon = cvCrosshairUseWeaponscale:GetBool()
-                and math.max(0.2, 10 * self:GetPrimaryCone())
-            or 1
+        local scaleWeapon = cvCrosshairUseWeaponscale:GetBool() and baseConeWeapon or 1
         local timescale = 2 - mathClamp((CurTime() - self:LastShootTime()) * 5, 0.0, 1.0)
 
         -- handle size animation
@@ -451,11 +461,10 @@ if CLIENT then
                 and util.GetDefaultColor(color)
             or COLOR_BLACK
 
+        local mode = cvCrosshairMode:GetInt()
+
         -- draw crosshair dot
-        if
-            cvCrosshairMode:GetInt() == CROSSHAIR_MODE_DOT_AND_LINES
-            or cvCrosshairMode:GetInt() == CROSSHAIR_MODE_DOT_ONLY
-        then
+        if mode == CROSSHAIR_MODE_DOT_AND_LINES or mode == CROSSHAIR_MODE_DOT_ONLY then
             local xDot = xCenter - offsetLine
             local yDot = yCenter - offsetLine
 
@@ -481,10 +490,7 @@ if CLIENT then
         end
 
         -- draw crosshair lines
-        if
-            cvCrosshairMode:GetInt() == CROSSHAIR_MODE_DOT_AND_LINES
-            or cvCrosshairMode:GetInt() == CROSSHAIR_MODE_LINES_ONLY
-        then
+        if mode == CROSSHAIR_MODE_DOT_AND_LINES or mode == CROSSHAIR_MODE_LINES_ONLY then
             if cvEnableOutlineCrosshair:GetBool() then
                 surface.SetDrawColor(
                     colorOutline.r,
@@ -1591,7 +1597,7 @@ end
 if CLIENT then
     ---
     -- @realm client
-    local ttt_lowered = CreateConVar("ttt_ironsights_lowered", 1, CV_FLAGS_CLIENT)
+    local ttt_lowered = CreateConVar("ttt_ironsights_lowered", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
     local host_timescale = GetConVar("host_timescale")
 

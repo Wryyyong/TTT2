@@ -117,16 +117,18 @@ end
 if SERVER then
     ---
     -- @realm server
-    local cvDestructableDoorForced = CreateConVar("ttt2_doors_force_pairs", 1, CV_FLAGS_SERVER)
+    local cvDestructableDoorForced =
+        CreateConVar("ttt2_doors_force_pairs", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
-    local cvDestructableDoor = CreateConVar("ttt2_doors_destructible", 0, CV_FLAGS_SERVER)
+    local cvDestructableDoor =
+        CreateConVar("ttt2_doors_destructible", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
     ---
     -- @realm server
     local cvDestructableDoorLocked =
-        CreateConVar("ttt2_doors_locked_indestructible", 1, CV_FLAGS_SERVER)
+        CreateConVar("ttt2_doors_locked_indestructible", 1, CV_FLAGS_SERVER, nil, 0, 1)
 
     local function HandleDoorPairs(ent)
         local master = ent:GetInternalVariable("m_hMaster")

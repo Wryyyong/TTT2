@@ -122,7 +122,7 @@ function CLGAMEMODESUBMENU:Populate(parent)
         serverConvar = "ttt_minimum_players",
         label = "label_minimum_players",
         min = 0,
-        max = 15,
+        max = game.MaxPlayers(),
         decimal = 0,
     })
 

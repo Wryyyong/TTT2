@@ -15,11 +15,11 @@ local cv_selectedVSkin = CreateConVar("ttt2_selected_vskin", "dark_ttt2", CV_FLA
 
 ---
 -- @realm client
-local cv_blurVSkin = CreateConVar("ttt2_vskin_blur", 1, CV_FLAGS_CLIENT)
+local cv_blurVSkin = CreateConVar("ttt2_vskin_blur", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
 ---
 -- @realm client
-local cv_colorVSkin = CreateConVar("ttt2_vskin_color", 1, CV_FLAGS_CLIENT)
+local cv_colorVSkin = CreateConVar("ttt2_vskin_color", 1, CV_FLAGS_CLIENT, nil, 0, 1)
 
 vskin = vskin or {}
 
