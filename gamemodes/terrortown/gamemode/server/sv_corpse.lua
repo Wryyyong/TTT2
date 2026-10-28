@@ -47,9 +47,15 @@ ttt_include("sh_corpse")
 
 util.AddNetworkString("TTT2SendConfirmMsg")
 
+-- networked data abstraction layer
+local dti = CORPSE.dti
+local config = CORPSE.cv
+
+local CvIdentifyWithoutConfirm = config.identify_body_woconfirm
+
 ---
 -- @realm server
-CORPSE.cv.announce_body_found = CreateConVar(
+local CvAnnounceBodyFound = CreateConVar(
     "ttt_announce_body_found",
     1,
     CV_FLAGS_SERVER,
@@ -60,21 +66,22 @@ CORPSE.cv.announce_body_found = CreateConVar(
 
 ---
 -- @realm server
-CORPSE.cv.confirm_team =
+local CvConfirmTeam =
     CreateConVar("ttt2_confirm_team", 0, CV_FLAGS_SERVER, "Show team of confirmed player", 0, 1)
 
 ---
 -- @realm server
-CORPSE.cv.confirm_killlist =
+local CvConfirmKillList =
     CreateConVar("ttt2_confirm_killlist", 1, CV_FLAGS_SERVER, "Confirm players in kill list", 0, 1)
 
 ---
 -- @realm server
-CORPSE.cv.ragdoll_collide = CreateConVar("ttt_ragdoll_collide", 0, CV_FLAGS_SERVER, nil, 0, 1)
+local CvRagdollCollision = CreateConVar("ttt_ragdoll_collide", 0, CV_FLAGS_SERVER, nil, 0, 1)
 
--- networked data abstraction layer
-local dti = CORPSE.dti
-local config = CORPSE.cv
+config.announce_body_found = CvAnnounceBodyFound
+config.confirm_team = CvConfirmTeam
+config.confirm_killlist = CvConfirmKillList
+config.ragdoll_collide = CvRagdollCollision
 
 ---
 -- Sets a CORPSE found state
@@ -173,13 +180,13 @@ function CORPSE.IdentifyBody(ply, rag, searchUID)
     end
 
     -- Announce body
-    if config.announce_body_found:GetBool() and notConfirmed then
+    if CvAnnounceBodyFound:GetBool() and notConfirmed then
         local subrole = rag.was_role
         local team = rag.was_team
         local rd = roles.GetByIndex(subrole)
         local roletext = "body_found_" .. rd.abbr
         local clr = rag.role_color
-        local bool = config.confirm_team:GetBool()
+        local bool = CvConfirmTeam:GetBool()
 
         net.Start("TTT2SendConfirmMsg")
 
@@ -213,7 +220,7 @@ function CORPSE.IdentifyBody(ply, rag, searchUID)
         net.Broadcast()
     end
 
-    if config.confirm_killlist:GetBool() then
+    if CvConfirmKillList:GetBool() then
         -- Handle kill list
         local ragKills = rag.kills
 
@@ -291,7 +298,7 @@ function CORPSE.ShowSearch(ply, rag, isCovert, isLongRange)
         end
 
         if
-            config.identify_body_woconfirm:GetBool()
+            CvIdentifyWithoutConfirm:GetBool()
             and gameloop.IsDetectiveMode()
             and not isCovert
         then
@@ -660,7 +667,7 @@ function CORPSE.GetPlayerTeam(rag)
 end
 
 hook.Add("ShouldCollide", "TTT2RagdollCollide", function(ent1, ent2)
-    if config.ragdoll_collide:GetBool() then
+    if CvRagdollCollision:GetBool() then
         return
     end
 

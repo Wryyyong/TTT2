@@ -14,116 +14,127 @@ ARMOR = {}
 util.AddNetworkString("ttt2_sync_armor")
 util.AddNetworkString("ttt2_sync_armor_max")
 
+---
+-- @realm server
+local CvArmorOnSpawn = CreateConVar("ttt_armor_on_spawn", 0, CV_FLAGS_SERVER, nil, 0)
+
+---
+-- @realm server
+local CvReinforcedEnable = CreateConVar(
+    "ttt_armor_enable_reinforced",
+    1,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
+---
+-- @realm server
+local CvReinforcedThreshold = CreateConVar(
+    "ttt_armor_threshold_for_reinforced",
+    50,
+    CV_FLAGS_SERVER,
+    nil,
+    0
+)
+
+---
+-- @realm server
+local CvDamageBlockPercent = CreateConVar(
+    "ttt_armor_damage_block_pct",
+    0.2,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
+---
+-- @realm server
+local CvDamageHealthPercent = CreateConVar(
+    "ttt_armor_damage_health_pct",
+    0.7,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
+---
+-- @realm server
+local CvDynamicMode = CreateConVar("ttt_armor_dynamic", 1, CV_FLAGS_SERVER, nil, 0, 1)
+
+---
+-- @realm server
+local CvArmorItemValue = CreateConVar("ttt_item_armor_value", 30, CV_FLAGS_SERVER, nil, 0)
+
+---
+-- @realm server
+local CvBlockHeadshots = CreateConVar(
+    "ttt_item_armor_block_headshots",
+    1,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
+---
+-- @realm server
+local CvBlockBlastDmg = CreateConVar(
+    "ttt_item_armor_block_blastdmg",
+    0,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
+---
+-- @realm server
+local CvBlockClubDmg = CreateConVar(
+    "ttt_item_armor_block_clubdmg",
+    0,
+    CV_FLAGS_SERVER,
+    nil,
+    0,
+    1
+)
+
 -- SET UP CONVARS
 ARMOR.cv = {
-    ---
-    -- @realm server
-    armor_on_spawn = CreateConVar("ttt_armor_on_spawn", 0, CV_FLAGS_SERVER, nil, 0),
-
-    ---
-    -- @realm server
-    armor_enable_reinforced = CreateConVar(
-        "ttt_armor_enable_reinforced",
-        1,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
-
-    ---
-    -- @realm server
-    armor_threshold_for_reinforced = CreateConVar(
-        "ttt_armor_threshold_for_reinforced",
-        50,
-        CV_FLAGS_SERVER,
-        nil,
-        0
-    ),
-
-    ---
-    -- @realm server
-    armor_damage_block_pct = CreateConVar(
-        "ttt_armor_damage_block_pct",
-        0.2,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
-
-    ---
-    -- @realm server
-    armor_damage_health_pct = CreateConVar(
-        "ttt_armor_damage_health_pct",
-        0.7,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
-
-    ---
-    -- @realm server
-    armor_dynamic = CreateConVar("ttt_armor_dynamic", 1, CV_FLAGS_SERVER, nil, 0, 1),
-
-    ---
-    -- @realm server
-    item_armor_value = CreateConVar("ttt_item_armor_value", 30, CV_FLAGS_SERVER, nil, 0),
-
-    ---
-    -- @realm server
-    item_armor_block_headshots = CreateConVar(
-        "ttt_item_armor_block_headshots",
-        1,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
-
-    ---
-    -- @realm server
-    item_armor_block_blastdmg = CreateConVar(
-        "ttt_item_armor_block_blastdmg",
-        0,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
-
-    ---
-    -- @realm server
-    item_armor_block_clubdmg = CreateConVar(
-        "ttt_item_armor_block_clubdmg",
-        0,
-        CV_FLAGS_SERVER,
-        nil,
-        0,
-        1
-    ),
+    armor_on_spawn = CvArmorOnSpawn,
+    armor_enable_reinforced = CvReinforcedEnable,
+    armor_threshold_for_reinforced = CvReinforcedThreshold,
+    armor_damage_block_pct = CvDamageBlockPercent,
+    armor_damage_health_pct = CvDamageHealthPercent,
+    armor_dynamic = CvDynamicMode,
+    item_armor_value = CvArmorItemValue,
+    item_armor_block_headshots = CvBlockHeadshots,
+    item_armor_block_blastdmg = CvBlockBlastDmg,
+    item_armor_block_clubdmg = CvBlockClubDmg,
 }
 
 hook.Add("TTT2SyncGlobals", "AddArmorGlobals", function()
-    SetGlobalBool(ARMOR.cv.armor_dynamic:GetName(), ARMOR.cv.armor_dynamic:GetBool())
+    SetGlobalBool(CvDynamicMode:GetName(), CvDynamicMode:GetBool())
     SetGlobalBool(
-        ARMOR.cv.armor_enable_reinforced:GetName(),
-        ARMOR.cv.armor_enable_reinforced:GetBool()
+        CvReinforcedEnable:GetName(),
+        CvReinforcedEnable:GetBool()
     )
-    SetGlobalBool(
-        ARMOR.cv.armor_threshold_for_reinforced:GetName(),
-        ARMOR.cv.armor_threshold_for_reinforced:GetInt()
+    SetGlobalInt(
+        CvReinforcedThreshold:GetName(),
+        CvReinforcedThreshold:GetInt()
     )
 end)
 
-cvars.AddChangeCallback(ARMOR.cv.armor_dynamic:GetName(), CommonCvarCallback_SetGlobalBool)
+cvars.AddChangeCallback(CvDynamicMode:GetName(), CommonCvarCallback_SetGlobalBool)
 cvars.AddChangeCallback(
-    ARMOR.cv.armor_enable_reinforced:GetName(),
+    CvReinforcedEnable:GetName(),
     CommonCvarCallback_SetGlobalBool
 )
 cvars.AddChangeCallback(
-    ARMOR.cv.armor_threshold_for_reinforced:GetName(),
+    CvReinforcedThreshold:GetName(),
     CommonCvarCallback_SetGlobalInt
 )
 
@@ -145,7 +156,7 @@ function ARMOR:InitPlayerArmor()
             continue
         end
 
-        ply:GiveArmor(self.cv.armor_on_spawn:GetInt())
+        ply:GiveArmor(CvArmorOnSpawn:GetInt())
     end
 end
 
@@ -167,7 +178,7 @@ function ARMOR:HandlePlayerTakeDamage(ply, infl, att, amount, dmginfo)
     end
 
     -- handle if headshots should be ignored by the armor
-    if ply:LastHitGroup() == HITGROUP_HEAD and not self.cv.item_armor_block_headshots:GetBool() then
+    if ply:LastHitGroup() == HITGROUP_HEAD and not CvBlockHeadshots:GetBool() then
         return
     end
 
@@ -182,17 +193,17 @@ function ARMOR:HandlePlayerTakeDamage(ply, infl, att, amount, dmginfo)
     end
 
     -- handle if blast damage should be ignored by the armor
-    if dmginfo:IsDamageType(DMG_BLAST) and not self.cv.item_armor_block_blastdmg:GetBool() then
+    if dmginfo:IsDamageType(DMG_BLAST) and not CvBlockBlastDmg:GetBool() then
         return
     end
 
     -- handle if crowbar damage should be ignored by the armor
-    if dmginfo:IsDamageType(DMG_CLUB) and not self.cv.item_armor_block_clubdmg:GetBool() then
+    if dmginfo:IsDamageType(DMG_CLUB) and not CvBlockClubDmg:GetBool() then
         return
     end
 
     -- fallback for players who prefer the vanilla armor
-    if not self.cv.armor_dynamic:GetBool() then
+    if not CvDynamicMode:GetBool() then
         -- classic armor only shields from bullet damage
         if dmginfo:IsDamageType(DMG_BULLET) then
             dmginfo:ScaleDamage(0.7)
@@ -204,22 +215,22 @@ function ARMOR:HandlePlayerTakeDamage(ply, infl, att, amount, dmginfo)
     -- calculate damage
     local damage = dmginfo:GetDamage()
 
-    self.cv.armor_factor = self.cv.armor_damage_block_pct:GetFloat()
-    self.cv.health_factor = self.cv.armor_damage_health_pct:GetFloat()
+    local armor_factor = CvDamageBlockPercent:GetFloat()
+    local health_factor = CvDamageHealthPercent:GetFloat()
 
     if ply:ArmorIsReinforced() then
-        self.cv.health_factor = self.cv.health_factor - 0.15
+        health_factor = health_factor - 0.15
     end
 
-    local armorDamage = self.cv.armor_factor * damage
+    local armorDamage = armor_factor * damage
 
     ply:DecreaseArmorValue(armorDamage)
 
     -- Describes the maximum amount of damage that our current armor can endure.
     -- This might exceed the actual damage, so we need to limit this.
-    local damageReduced = math.min(damage, armor / self.cv.armor_factor)
+    local damageReduced = math.min(damage, armor / armor_factor)
 
-    dmginfo:SetDamage(damageReduced * self.cv.health_factor + damage - damageReduced)
+    dmginfo:SetDamage(damageReduced * health_factor + damage - damageReduced)
 end
 
 ---
